@@ -153,6 +153,26 @@
     if (e.key === "Escape") closeLightbox();
   });
 
+  /* ---------- 赛场历程（点击切换） ---------- */
+  var tlTabs = document.querySelectorAll(".tl-tab");
+  var tlPanels = document.querySelectorAll(".tl-panel");
+
+  if (tlTabs.length && tlPanels.length) {
+    tlTabs.forEach(function (tab) {
+      tab.addEventListener("click", function () {
+        var year = tab.getAttribute("data-year");
+        tlTabs.forEach(function (t) {
+          var on = t === tab;
+          t.classList.toggle("is-active", on);
+          t.setAttribute("aria-selected", on ? "true" : "false");
+        });
+        tlPanels.forEach(function (p) {
+          p.classList.toggle("is-active", p.getAttribute("data-year") === year);
+        });
+      });
+    });
+  }
+
   /* ---------- 视频弹层 ---------- */
   var videoModal = document.getElementById("videoModal");
   var vmVideo = document.getElementById("vmVideo");
