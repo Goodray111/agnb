@@ -175,6 +175,24 @@
     });
   }
 
+  /* ---------- 招牌英雄（点击切换） ---------- */
+  var heroChips = document.querySelectorAll(".chip[data-hero]");
+  var heroPanels = document.querySelectorAll(".hero-detail-panel");
+
+  if (heroChips.length && heroPanels.length) {
+    heroChips.forEach(function (chip) {
+      chip.addEventListener("click", function () {
+        var key = chip.getAttribute("data-hero");
+        heroChips.forEach(function (c) {
+          c.classList.toggle("is-active", c === chip);
+        });
+        heroPanels.forEach(function (p) {
+          p.classList.toggle("is-active", p.getAttribute("data-hero") === key);
+        });
+      });
+    });
+  }
+
   /* ---------- 视频弹层 ---------- */
   var videoModal = document.getElementById("videoModal");
   var vmVideo = document.getElementById("vmVideo");
