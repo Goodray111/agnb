@@ -807,6 +807,22 @@ button { font-family: inherit; }
 .stat-card b em { font-style: normal; font-size: 0.55em; }
 .stat-card span { display: block; margin-top: 10px; font-size: 13px; color: var(--text-2); }
 
+.stats-detail {
+  margin: 26px auto 0;
+  max-width: 720px;
+  border-top: 1px solid var(--line);
+}
+.stats-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 14px;
+}
+.stats-row span { color: var(--text-2); }
+.stats-row b { color: var(--text); font-weight: 800; }
+
 .hero-pool {
   margin-top: 28px;
   display: flex;
@@ -850,6 +866,16 @@ button { font-family: inherit; }
   padding: 0;
   box-shadow: var(--shadow-sm);
 }
+.g-tile img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+.g-tile:hover img { transform: scale(1.04); }
 .g-tile::after {
   content: "";
   position: absolute;
