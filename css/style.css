@@ -928,7 +928,7 @@ button { font-family: inherit; }
   opacity: 0.82;
   transition: transform 0.5s ease, opacity 0.3s ease;
 }
-.h-media-video:hover .h-cover { transform: scale(1.04); opacity: 0.95; }
+.h-card:hover .h-cover { transform: scale(1.04); opacity: 0.95; }
 .play-btn {
   position: relative;
   z-index: 2;

@@ -37,6 +37,7 @@ my-website/
 - 直播吧《一诺职业生涯成绩改写为七冠六亚》：http://news.zhibo8.com/game/2026-05-23/6a11b57857765native.htm
 - 虎扑《人物》专访一诺：https://bbs.hupu.com/642918566.html
 - 腾讯王者荣耀官网 · KPL 名场面
+- 萌娘共享「AG一诺」分类（CC BY-NC-SA 4.0）：https://commons.moegirl.org.cn/Category:AG一诺
 
 > 以上资料用于非商业粉丝展示；如有不妥，请联系删除。
 
