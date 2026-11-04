@@ -1085,6 +1085,14 @@ button { font-family: inherit; }
   max-width: 1040px;
   overflow-x: auto;
 }
+.stats-subtitle {
+  max-width: 1040px;
+  margin: 34px auto 0;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--text-2);
+}
 .stats-table {
   width: 100%;
   min-width: 860px;
