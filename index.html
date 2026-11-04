@@ -178,7 +178,11 @@
         </div>
         <div class="cards-grid">
           <article class="h-card">
-            <div class="h-media grad-1"><span>名场面 · 示例</span></div>
+            <div class="h-media h-media-video">
+              <img class="h-cover" src="assets/highlight-gongsunli-poster.jpg" alt="公孙离名场面视频封面" loading="lazy" />
+              <button class="play-btn" data-video="assets/highlight-gongsunli.mp4" aria-label="播放公孙离名场面"><span>▶</span></button>
+              <span class="video-badge">视频</span>
+            </div>
             <div class="h-body">
               <span class="tag">高光</span>
               <h4>公孙离天秀时刻</h4>
@@ -210,7 +214,7 @@
             </div>
           </article>
         </div>
-        <p class="sample-note">* 卡片内容为示例，后续替换为真实名场面与视频链接。</p>
+        <p class="sample-note">* 首张卡片为公孙离名场面视频片段；其余卡片为示例，后续替换。</p>
       </div>
     </section>
   </main>
@@ -225,6 +229,14 @@
   </footer>
 
   <button class="back-top" id="backTop" aria-label="回到顶部">↑</button>
+
+  <!-- ===== 视频播放弹层 ===== -->
+  <div class="video-modal" id="videoModal" aria-hidden="true" role="dialog" aria-label="视频播放">
+    <button class="vm-close" id="vmClose" aria-label="关闭">×</button>
+    <div class="vm-inner">
+      <video id="vmVideo" controls playsinline preload="metadata"></video>
+    </div>
+  </div>
 
   <script src="js/main.js"></script>
 </body>

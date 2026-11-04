@@ -153,6 +153,44 @@
     if (e.key === "Escape") closeLightbox();
   });
 
+  /* ---------- 视频弹层 ---------- */
+  var videoModal = document.getElementById("videoModal");
+  var vmVideo = document.getElementById("vmVideo");
+  var vmClose = document.getElementById("vmClose");
+
+  function openVideo(src) {
+    if (!videoModal || !vmVideo) return;
+    vmVideo.src = src;
+    videoModal.classList.add("open");
+    videoModal.setAttribute("aria-hidden", "false");
+    var p = vmVideo.play();
+    if (p && p.catch) p.catch(function () {});
+  }
+
+  function closeVideo() {
+    if (!videoModal || !vmVideo) return;
+    vmVideo.pause();
+    vmVideo.removeAttribute("src");
+    vmVideo.load();
+    videoModal.classList.remove("open");
+    videoModal.setAttribute("aria-hidden", "true");
+  }
+
+  document.querySelectorAll(".play-btn[data-video]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      openVideo(btn.getAttribute("data-video"));
+    });
+  });
+  if (vmClose) vmClose.addEventListener("click", closeVideo);
+  if (videoModal) {
+    videoModal.addEventListener("click", function (e) {
+      if (e.target === videoModal) closeVideo();
+    });
+  }
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") closeVideo();
+  });
+
   /* ---------- 留言板（本地存储） ---------- */
   var msgForm = document.getElementById("msgForm");
   var msgList = document.getElementById("msgList");
