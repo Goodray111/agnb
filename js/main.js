@@ -153,22 +153,24 @@
     if (e.key === "Escape") closeLightbox();
   });
 
-  /* ---------- 赛场历程（点击切换） ---------- */
-  var tlTabs = document.querySelectorAll(".tl-tab");
-  var tlPanels = document.querySelectorAll(".tl-panel");
+  /* ---------- 赛场历程（手风琴） ---------- */
+  var accItems = document.querySelectorAll(".tl-acc-item");
 
-  if (tlTabs.length && tlPanels.length) {
-    tlTabs.forEach(function (tab) {
-      tab.addEventListener("click", function () {
-        var year = tab.getAttribute("data-year");
-        tlTabs.forEach(function (t) {
-          var on = t === tab;
-          t.classList.toggle("is-active", on);
-          t.setAttribute("aria-selected", on ? "true" : "false");
+  if (accItems.length) {
+    accItems.forEach(function (item) {
+      var head = item.querySelector(".tl-acc-head");
+      if (!head) return;
+      head.addEventListener("click", function () {
+        var wasOpen = item.classList.contains("is-open");
+        accItems.forEach(function (i) {
+          i.classList.remove("is-open");
+          var h = i.querySelector(".tl-acc-head");
+          if (h) h.setAttribute("aria-expanded", "false");
         });
-        tlPanels.forEach(function (p) {
-          p.classList.toggle("is-active", p.getAttribute("data-year") === year);
-        });
+        if (!wasOpen) {
+          item.classList.add("is-open");
+          head.setAttribute("aria-expanded", "true");
+        }
       });
     });
   }
