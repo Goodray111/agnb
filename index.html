@@ -234,7 +234,11 @@
   <div class="video-modal" id="videoModal" aria-hidden="true" role="dialog" aria-label="视频播放">
     <button class="vm-close" id="vmClose" aria-label="关闭">×</button>
     <div class="vm-inner">
-      <video id="vmVideo" controls playsinline preload="metadata"></video>
+      <video id="vmVideo" controls playsinline preload="metadata" poster="assets/highlight-gongsunli-poster.jpg">
+        <source src="assets/highlight-gongsunli.mp4" type="video/mp4" />
+        你的浏览器不支持视频播放。
+      </video>
+      <a class="vm-link" href="assets/highlight-gongsunli.mp4" target="_blank" rel="noopener">打开视频文件 ↗</a>
     </div>
   </div>
 

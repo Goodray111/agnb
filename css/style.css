@@ -721,6 +721,16 @@ button { font-family: inherit; }
   box-shadow: var(--shadow);
 }
 
+.vm-link {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--text-2);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.vm-link:hover { color: var(--red); }
+
 .h-body { padding: 20px; flex: 1; }
 .tag {
   display: inline-block;
