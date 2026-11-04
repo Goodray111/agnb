@@ -399,6 +399,34 @@ button { font-family: inherit; }
 }
 .sample-note::before { content: "※ "; color: var(--gold); }
 
+/* ---------- 成长故事 ---------- */
+.story {
+  max-width: 840px;
+  margin: 0 auto;
+}
+.story p {
+  margin: 0 0 18px;
+  font-size: 16px;
+  line-height: 1.95;
+  color: var(--text);
+}
+.story h3 {
+  margin: 40px 0 14px;
+  font-size: 19px;
+  font-weight: 800;
+  color: var(--gold);
+  letter-spacing: 0.02em;
+}
+.story h3:first-child { margin-top: 0; }
+.story blockquote {
+  margin: 22px 0;
+  padding: 16px 0 16px 20px;
+  border-left: 3px solid var(--gold);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+}
+
 /* ---------- 关于 ---------- */
 .about-grid {
   display: grid;
@@ -822,6 +850,59 @@ button { font-family: inherit; }
 }
 .stats-row span { color: var(--text-2); }
 .stats-row b { color: var(--text); font-weight: 800; }
+
+.stats-table-wrap {
+  margin: 30px auto 0;
+  max-width: 760px;
+  overflow-x: auto;
+}
+.stats-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.stats-table th,
+.stats-table td {
+  padding: 10px 12px;
+  text-align: center;
+  border-bottom: 1px solid var(--line);
+}
+.stats-table th {
+  color: var(--text-2);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+}
+.stats-table td:first-child { color: var(--red); font-weight: 700; }
+.stats-table tbody tr:hover td { background: var(--card); }
+
+.honors {
+  margin: 34px auto 0;
+  max-width: 760px;
+}
+.honors h3 {
+  margin: 0 0 12px;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: var(--red);
+}
+.honors ul { list-style: none; margin: 0; padding: 0; }
+.honors li {
+  position: relative;
+  padding: 9px 0 9px 20px;
+  border-bottom: 1px solid var(--line);
+  font-size: 14px;
+  color: var(--text-2);
+}
+.honors li::before {
+  content: "★";
+  position: absolute;
+  left: 0;
+  top: 9px;
+  font-size: 10px;
+  color: var(--gold);
+}
 
 .hero-pool {
   margin-top: 28px;
