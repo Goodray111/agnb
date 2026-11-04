@@ -419,7 +419,7 @@ button { font-family: inherit; }
 .about-photo img {
   display: block;
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 10;
   object-fit: cover;
   transition: transform 0.6s ease;
 }
@@ -582,15 +582,15 @@ button { font-family: inherit; }
 /* 带照片的时间线卡片 */
 .tl-card-photo {
   display: grid;
-  grid-template-columns: 150px 1fr;
-  gap: 18px;
+  grid-template-columns: 96px 1fr;
+  gap: 16px;
   align-items: center;
-  padding: 14px;
+  padding: 14px 18px;
 }
 .tl-photo {
-  width: 150px;
-  aspect-ratio: 3 / 4;
-  border-radius: 10px;
+  width: 96px;
+  aspect-ratio: 4 / 5;
+  border-radius: 8px;
   overflow: hidden;
   border: 1px solid var(--line);
   background: var(--bg);
@@ -659,7 +659,7 @@ button { font-family: inherit; }
 }
 
 /* 视频卡片 */
-.h-media-video { height: 200px; }
+.h-media-video { height: 180px; }
 .h-media-video::after { content: none; }
 .h-cover {
   position: absolute;
@@ -1122,8 +1122,8 @@ button { font-family: inherit; }
   .section { padding: 72px 0; }
   .gallery-grid { grid-template-columns: repeat(2, 1fr); }
   .quotes-grid { grid-template-columns: 1fr; }
-  .tl-card-photo { grid-template-columns: 110px 1fr; gap: 14px; }
-  .tl-photo { width: 110px; }
+  .tl-card-photo { grid-template-columns: 80px 1fr; gap: 12px; }
+  .tl-photo { width: 80px; }
   .watermark { font-size: 42vw; }
 }
 
