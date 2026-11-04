@@ -204,11 +204,11 @@ button { font-family: inherit; }
 /* ---------- 首页 Banner ---------- */
 .hero {
   position: relative;
-  min-height: 100svh;
+  min-height: 82svh;
   display: grid;
   place-items: center;
   overflow: hidden;
-  padding: calc(var(--nav-h) + 40px) 24px 60px;
+  padding: calc(var(--nav-h) + 32px) 24px 56px;
   text-align: center;
 }
 
@@ -228,8 +228,8 @@ button { font-family: inherit; }
   height: 100%;
   object-fit: cover;
   object-position: center 30%;
-  opacity: 0.52;
-  filter: saturate(1.06) contrast(1.02) blur(1.2px);
+  opacity: 0.4;
+  filter: saturate(1.06) contrast(1.02) blur(1.4px);
   animation: heroZoom 20s ease-in-out infinite alternate;
 }
 @keyframes heroZoom {
@@ -402,13 +402,14 @@ button { font-family: inherit; }
 /* ---------- 关于 ---------- */
 .about-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr);
-  gap: 36px;
+  grid-template-columns: minmax(0, 0.52fr) minmax(0, 1.48fr);
+  gap: 32px;
   align-items: start;
 }
 
 .about-photo {
   margin: 0;
+  max-width: 280px;
   position: relative;
   border-radius: var(--radius);
   overflow: hidden;
@@ -463,7 +464,7 @@ button { font-family: inherit; }
   background: var(--card);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  padding: 32px;
+  padding: 26px;
   box-shadow: var(--shadow-sm);
 }
 
@@ -659,7 +660,7 @@ button { font-family: inherit; }
 }
 
 /* 视频卡片 */
-.h-media-video { height: 180px; }
+.h-media-video { height: 160px; }
 .h-media-video::after { content: none; }
 .h-cover {
   position: absolute;
