@@ -778,6 +778,30 @@
     });
   })();
 
+  /* ---------- 专辑化：目录页码 + 章节编号 ---------- */
+  (function () {
+    document.querySelectorAll(".hub-card .hub-num").forEach(function (el) {
+      if (el.textContent.indexOf("P.") === 0) return;
+      el.textContent = "P." + el.textContent;
+    });
+
+    var chapters = ["about", "story", "timeline", "highlights", "stats", "quotes", "play", "gallery", "message"];
+    chapters.forEach(function (id, i) {
+      var sec = document.getElementById(id);
+      if (!sec) return;
+      var label = sec.querySelector(".section-label");
+      if (label && label.textContent.indexOf("CH.") !== 0) {
+        label.textContent = "CH." + (i + 1) + " · " + label.textContent;
+      }
+      if (!sec.querySelector(".chapter-page")) {
+        var pn = document.createElement("span");
+        pn.className = "chapter-page";
+        pn.textContent = "0" + (i + 1) + " / 09";
+        sec.appendChild(pn);
+      }
+    });
+  })();
+
   /* ---------- 年份 ---------- */
   var yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
