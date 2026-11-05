@@ -746,7 +746,7 @@
       el.textContent = "P." + el.textContent;
     });
 
-    var chapters = ["about", "story", "timeline", "highlights", "stats", "quotes", "play", "gallery", "message"];
+    var chapters = ["about", "story", "timeline", "highlights", "stats", "schedule", "quotes", "play", "gallery", "message"];
     chapters.forEach(function (id, i) {
       var sec = document.getElementById(id);
       if (!sec) return;
@@ -757,7 +757,8 @@
       if (!sec.querySelector(".chapter-page")) {
         var pn = document.createElement("span");
         pn.className = "chapter-page";
-        pn.textContent = "0" + (i + 1) + " / 09";
+        var pad2 = function (n) { return n < 10 ? "0" + n : "" + n; };
+        pn.textContent = pad2(i + 1) + " / " + pad2(chapters.length);
         sec.appendChild(pn);
       }
     });
