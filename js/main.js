@@ -715,6 +715,39 @@
     });
   }
 
+  /* ---------- 动态效果：Hero 视差 ---------- */
+  (function () {
+    var hero = document.querySelector(".hero");
+    var poster = document.querySelector(".hero-media img");
+    if (!hero || !poster) return;
+    hero.addEventListener("mousemove", function (e) {
+      var r = hero.getBoundingClientRect();
+      var x = (e.clientX - r.left) / r.width - 0.5;
+      var y = (e.clientY - r.top) / r.height - 0.5;
+      poster.style.transform = "perspective(1000px) rotateY(" + (x * 7).toFixed(2) + "deg) rotateX(" + (-y * 7).toFixed(2) + "deg) scale(1.02)";
+    });
+    hero.addEventListener("mouseleave", function () {
+      poster.style.transform = "";
+    });
+  })();
+
+  /* ---------- 动态效果：点击波纹 ---------- */
+  (function () {
+    document.addEventListener("click", function (e) {
+      var target = e.target && e.target.closest
+        ? e.target.closest(".hub-card, .game-opt, .hero-cta, .game-foot button, .msg-submit")
+        : null;
+      if (!target) return;
+      var r = target.getBoundingClientRect();
+      var s = document.createElement("span");
+      s.className = "ripple";
+      s.style.left = (e.clientX - r.left) + "px";
+      s.style.top = (e.clientY - r.top) + "px";
+      target.appendChild(s);
+      setTimeout(function () { s.remove(); }, 650);
+    });
+  })();
+
   /* ---------- 年份 ---------- */
   var yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
