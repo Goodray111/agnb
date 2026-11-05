@@ -224,8 +224,14 @@
   var vmVideo = document.getElementById("vmVideo");
   var vmClose = document.getElementById("vmClose");
 
-  function openVideo() {
+  var vmLink = document.getElementById("vmLink");
+
+  function openVideo(src) {
     if (!videoModal || !vmVideo) return;
+    if (src) {
+      vmVideo.src = src;
+      if (vmLink) vmLink.setAttribute("href", src);
+    }
     videoModal.classList.add("open");
     videoModal.setAttribute("aria-hidden", "false");
     var p = vmVideo.play();
@@ -241,7 +247,7 @@
 
   document.querySelectorAll(".play-btn[data-video]").forEach(function (btn) {
     btn.addEventListener("click", function () {
-      openVideo();
+      openVideo(btn.getAttribute("data-video"));
     });
   });
   if (vmClose) vmClose.addEventListener("click", closeVideo);

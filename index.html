@@ -453,8 +453,32 @@
               <p>2024 春季赛常规赛 8 次出场全胜，季后赛再下一城，敖隐一度成为他 9 战全胜的「隐藏答案」。</p>
             </div>
           </article>
+          <article class="h-card">
+            <div class="h-media h-media-video">
+              <img class="h-cover" src="assets/highlight-aoyin-poster.jpg" alt="敖隐闪秒公孙离视频封面" loading="lazy" />
+              <button class="play-btn" data-video="assets/highlight-aoyin.mp4" aria-label="播放敖隐闪秒公孙离"><span>▶</span></button>
+              <span class="video-badge">视频</span>
+            </div>
+            <div class="h-body">
+              <span class="tag">实战</span>
+              <h4>敖隐闪秒公孙离</h4>
+              <p>AG 一诺用敖隐闪秒公孙离的实战片段，附各直播间反应。</p>
+            </div>
+          </article>
+          <article class="h-card">
+            <div class="h-media h-media-video">
+              <img class="h-cover" src="assets/highlight-heroes-poster.jpg" alt="全英雄高光盛宴视频封面" loading="lazy" />
+              <button class="play-btn" data-video="assets/highlight-heroes.mp4" aria-label="播放全英雄高光盛宴"><span>▶</span></button>
+              <span class="video-badge">视频</span>
+            </div>
+            <div class="h-body">
+              <span class="tag">合集</span>
+              <h4>全英雄高光盛宴</h4>
+              <p>「47 个英雄，是我的来时路」高光合集片段。</p>
+            </div>
+          </article>
         </div>
-        <p class="sample-note">* 首张卡片为公孙离名场面视频；其余为真实赛事节点，资料参考百度百科与直播吧。</p>
+        <p class="sample-note">* 视频片段来自 B 站公开二创（仅作非商业粉丝展示）；其余为真实赛事节点，资料参考百度百科与直播吧。</p>
       </div>
     </section>
 
@@ -753,11 +777,8 @@
   <div class="video-modal" id="videoModal" aria-hidden="true" role="dialog" aria-label="视频播放">
     <button class="vm-close" id="vmClose" aria-label="关闭">×</button>
     <div class="vm-inner">
-      <video id="vmVideo" controls playsinline preload="metadata" poster="assets/highlight-gongsunli-poster.jpg">
-        <source src="assets/highlight-gongsunli.mp4" type="video/mp4" />
-        你的浏览器不支持视频播放。
-      </video>
-      <a class="vm-link" href="assets/highlight-gongsunli.mp4" target="_blank" rel="noopener">打开视频文件 ↗</a>
+      <video id="vmVideo" controls playsinline preload="metadata"></video>
+      <a class="vm-link" id="vmLink" href="#" target="_blank" rel="noopener">打开视频文件 ↗</a>
     </div>
   </div>
 
