@@ -78,6 +78,7 @@
         el.classList.add("in");
       });
     }
+    if (id === "stats") animateStats();
     try {
       history.replaceState(null, "", "#" + id);
     } catch (e) {}
@@ -492,6 +493,187 @@
     }
     renderGuess();
   })();
+
+  /* ---------- 互动玩法：荣誉配对 ---------- */
+  (function () {
+    var body = document.getElementById("matchBody");
+    var scoreEl = document.getElementById("matchScore");
+    var restart = document.getElementById("matchRestart");
+    if (!body) return;
+
+    var pairs = [
+      { event: "KPL 首秀", year: "2018" },
+      { event: "首夺 KPL 冠军", year: "2019" },
+      { event: "达成 2000 击杀", year: "2022" },
+      { event: "首夺 FMVP", year: "2023" },
+      { event: "捧起第七冠", year: "2025" }
+    ];
+    var left = [], right = [], selLeft = null, matched = 0, locked = false;
+
+    function shuffle(a) {
+      var arr = a.slice();
+      for (var i = arr.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var t = arr[i];
+        arr[i] = arr[j];
+        arr[j] = t;
+      }
+      return arr;
+    }
+
+    function render() {
+      body.innerHTML = '<div class="match-cols"><div class="match-col" id="matchLeft"></div><div class="match-col" id="matchRight"></div></div>';
+      var l = document.getElementById("matchLeft");
+      var r = document.getElementById("matchRight");
+      left.forEach(function (p, i) {
+        var b = document.createElement("button");
+        b.className = "match-item";
+        b.setAttribute("data-i", i);
+        b.textContent = p.event;
+        b.addEventListener("click", function () { pickLeft(i, b); });
+        l.appendChild(b);
+      });
+      right.forEach(function (p, i) {
+        var b = document.createElement("button");
+        b.className = "match-item";
+        b.setAttribute("data-i", i);
+        b.textContent = p.year;
+        b.addEventListener("click", function () { pickRight(i, b); });
+        r.appendChild(b);
+      });
+      scoreEl.textContent = matched + " / " + pairs.length;
+    }
+
+    function pickLeft(i, btn) {
+      if (locked || btn.classList.contains("matched")) return;
+      document.querySelectorAll("#matchLeft .match-item").forEach(function (b) {
+        b.classList.remove("sel");
+      });
+      btn.classList.add("sel");
+      selLeft = i;
+    }
+
+    function pickRight(i, btn) {
+      if (locked || btn.classList.contains("matched") || selLeft === null) return;
+      var lBtn = document.querySelector('#matchLeft .match-item[data-i="' + selLeft + '"]');
+      if (!lBtn) return;
+      var li = selLeft;
+      locked = true;
+      if (left[li].year === right[i].year) {
+        lBtn.classList.remove("sel");
+        lBtn.classList.add("matched");
+        btn.classList.add("matched");
+        selLeft = null;
+        matched++;
+        scoreEl.textContent = matched + " / " + pairs.length;
+        locked = false;
+        if (matched === pairs.length) scoreEl.textContent = "全对！";
+      } else {
+        lBtn.classList.add("wrong");
+        btn.classList.add("wrong");
+        setTimeout(function () {
+          lBtn.classList.remove("wrong", "sel");
+          btn.classList.remove("wrong");
+          selLeft = null;
+          locked = false;
+        }, 500);
+      }
+    }
+
+    function reset() {
+      left = shuffle(pairs);
+      right = shuffle(pairs);
+      selLeft = null;
+      matched = 0;
+      locked = false;
+      render();
+    }
+
+    if (restart) restart.addEventListener("click", reset);
+    reset();
+  })();
+
+  /* ---------- 互动玩法：今日一诺 ---------- */
+  (function () {
+    var body = document.getElementById("quoteBody");
+    var draw = document.getElementById("quoteDraw");
+    if (!body) return;
+
+    var quotes = [
+      "「别人都看不懂，我在打的时候一直都是巅峰，最强大的是自己。」",
+      "「你运气很好，想怎么玩就怎么玩。」",
+      "「老头射手」——他这样自嘲自己。",
+      "「输比赛会内耗，有无数个夜晚想不打了，但醒来还是坚持走下去。」",
+      "「一诺千金。」",
+      "「想赢，就要比别人多练一点。」",
+      "「我会等到属于我的那一天。」"
+    ];
+    var last = -1;
+
+    function showQuote() {
+      var i = Math.floor(Math.random() * quotes.length);
+      if (quotes.length > 1 && i === last) i = (i + 1) % quotes.length;
+      last = i;
+      body.innerHTML = '<div class="quote-box flip">' + quotes[i] + "</div>";
+    }
+
+    if (draw) draw.addEventListener("click", showQuote);
+    showQuote();
+  })();
+
+  /* ---------- 动态效果：滚动进度条 ---------- */
+  (function () {
+    var bar = document.getElementById("scrollProgress");
+    if (!bar) return;
+    function updateBar() {
+      var h = document.documentElement.scrollHeight - window.innerHeight;
+      var p = h > 0 ? (window.scrollY / h) * 100 : 0;
+      bar.style.width = Math.min(100, Math.max(0, p)) + "%";
+    }
+    window.addEventListener("scroll", updateBar, { passive: true });
+    window.addEventListener("resize", updateBar);
+    updateBar();
+  })();
+
+  /* ---------- 动态效果：目录卡 3D 倾斜 ---------- */
+  (function () {
+    var cards = document.querySelectorAll(".hub-card");
+    if (!cards.length) return;
+    cards.forEach(function (card) {
+      card.addEventListener("mousemove", function (e) {
+        var r = card.getBoundingClientRect();
+        var x = (e.clientX - r.left) / r.width - 0.5;
+        var y = (e.clientY - r.top) / r.height - 0.5;
+        card.style.transform = "perspective(600px) rotateX(" + (-y * 6).toFixed(2) + "deg) rotateY(" + (x * 6).toFixed(2) + "deg) translateY(-3px)";
+      });
+      card.addEventListener("mouseleave", function () {
+        card.style.transform = "";
+      });
+    });
+  })();
+
+  /* ---------- 动态效果：数据数字滚动 ---------- */
+  function animateStats() {
+    document.querySelectorAll(".stat-card b").forEach(function (b) {
+      if (b.dataset.done) return;
+      var text = b.textContent;
+      var num = parseInt(text, 10);
+      if (isNaN(num)) return;
+      var suffix = text.replace(/^[0-9]+/, "");
+      var start = performance.now();
+      function tick(now) {
+        var t = Math.min(1, (now - start) / 900);
+        var val = Math.round(num * (1 - Math.pow(1 - t, 3)));
+        b.textContent = val + suffix;
+        if (t < 1) requestAnimationFrame(tick);
+        else {
+          b.textContent = text;
+          b.dataset.done = "1";
+        }
+      }
+      requestAnimationFrame(tick);
+    });
+  }
 
   /* ---------- 年份 ---------- */
   var yearEl = document.getElementById("year");

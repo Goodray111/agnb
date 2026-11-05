@@ -27,6 +27,7 @@
   </script>
 </head>
 <body>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
   <a class="skip-link" href="#about">跳到正文</a>
 
   <!-- ===== 顶部导航 ===== -->
@@ -760,6 +761,27 @@
             </div>
             <div class="game-foot">
               <button id="guessRestart">再来一轮</button>
+            </div>
+          </div>
+
+          <div class="game-card reveal">
+            <div class="game-head">
+              <h3>荣誉配对</h3>
+              <span class="game-score" id="matchScore">0 / 5</span>
+            </div>
+            <div class="game-body" id="matchBody"></div>
+            <div class="game-foot">
+              <button id="matchRestart">重来</button>
+            </div>
+          </div>
+
+          <div class="game-card reveal">
+            <div class="game-head">
+              <h3>今日一诺</h3>
+            </div>
+            <div class="game-body" id="quoteBody"></div>
+            <div class="game-foot">
+              <button id="quoteDraw">抽一句</button>
             </div>
           </div>
         </div>
