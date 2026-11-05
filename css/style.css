@@ -1661,6 +1661,7 @@ button { font-family: inherit; }
   .quotes-grid { grid-template-columns: 1fr; }
   .hub-grid { grid-template-columns: repeat(2, 1fr); }
   .play-grid { grid-template-columns: 1fr; }
+  .facts-grid { grid-template-columns: 1fr; }
   .tl-card-photo { grid-template-columns: 80px 1fr; gap: 12px; }
   .tl-photo { width: 80px; }
   .tl-acc-year { width: 44px; font-size: 18px; }
@@ -1768,6 +1769,19 @@ button { font-family: inherit; }
   from { opacity: 0; transform: translateY(8px) scale(0.98); }
   to { opacity: 1; transform: none; }
 }
+
+.facts {
+  max-width: 980px;
+  margin: 26px auto 0;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--card);
+}
+.facts h3 { margin-bottom: 14px; font-size: 16px; font-weight: 800; }
+.facts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.fact { display: flex; gap: 10px; font-size: 12px; line-height: 1.6; color: var(--text-2); }
+.fact b { color: var(--red); font-weight: 800; }
 
 /* ---------- 动态效果 ---------- */
 .scroll-progress {

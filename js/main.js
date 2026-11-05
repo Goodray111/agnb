@@ -369,16 +369,34 @@
 
     var questions = [
       { q: "一诺的本名是？", opts: ["徐必成", "徐必达", "许必成", "徐一诺"], a: 0, tip: "徐必成，2001 年 12 月 26 日生于江西抚州南丰。" },
-      { q: "一诺的生日是？", opts: ["2001.12.26", "2002.01.26", "2001.06.12", "2000.12.26"], a: 0, tip: "2001 年 12 月 26 日，ID「一诺」取自「一诺千金」。" },
-      { q: "一诺在 KPL 的首秀英雄是？", opts: ["花木兰", "关羽", "公孙离", "孙尚香"], a: 0, tip: "2018.04.21 首秀，用花木兰对阵 eStarPro。" },
-      { q: "2023 世冠 KIC 总决赛，AG 的比分是？", opts: ["4:2", "4:1", "4:3", "3:4"], a: 0, tip: "4:2 击败北京 WB，一诺拿下 FMVP。" },
+      { q: "一诺的生日是？", opts: ["2001.12.26", "2002.01.26", "2001.06.12", "2000.12.26"], a: 0, tip: "2001 年 12 月 26 日。" },
+      { q: "一诺的出生地是？", opts: ["江西抚州南丰", "湖南长沙", "四川成都", "浙江杭州"], a: 0, tip: "江西抚州南丰。" },
+      { q: "一诺的 ID「一诺」取自？", opts: ["一诺千金", "一生之诺", "一诺倾心", "一诺无辞"], a: 0, tip: "一诺千金。" },
+      { q: "一诺在 KPL 的首秀日期是？", opts: ["2018.04.21", "2017.04.21", "2018.09.15", "2019.04.21"], a: 0, tip: "2018 年 4 月 21 日，BA 黑凤梨 vs eStarPro。" },
+      { q: "一诺在 KPL 首秀使用的英雄是？", opts: ["花木兰", "关羽", "公孙离", "孙尚香"], a: 0, tip: "花木兰。" },
+      { q: "2019 秋季赛，AG 首冠的对手是？", opts: ["QGhappy", "eStarPro", "北京 WB", "重庆狼队"], a: 0, tip: "2019.12.14，4:1 击败 QGhappy。" },
+      { q: "2019 秋季赛总决赛的比分是？", opts: ["4:1", "4:2", "4:3", "3:4"], a: 0, tip: "4:1。" },
+      { q: "2023 世冠 KIC 总决赛的比分是？", opts: ["4:2", "4:1", "4:3", "3:4"], a: 0, tip: "4:2 击败北京 WB。" },
       { q: "一诺的 FMVP 定制皮肤英雄是？", opts: ["公孙离", "孙尚香", "马可波罗", "敖隐"], a: 0, tip: "公孙离——「云诺千山」。" },
-      { q: "2020.05.08，一诺用裴擒虎达成了什么？", opts: ["KPL 1000 击杀", "KPL 2000 击杀", "KPL 4000 助攻", "KPL 600 胜"], a: 0, tip: "用裴擒虎达成 KPL 1000 击杀。" },
+      { q: "2020.05.08，一诺用裴擒虎达成了什么？", opts: ["KPL 1000 击杀", "KPL 2000 击杀", "KPL 4000 助攻", "KPL 600 胜"], a: 0, tip: "KPL 1000 击杀。" },
+      { q: "2022.02.20，一诺达成了什么里程碑？", opts: ["KPL 2000 击杀", "KPL 1000 击杀", "KPL 3000 助攻", "KPL 500 胜"], a: 0, tip: "KPL 2000 击杀。" },
+      { q: "2025.03.02，一诺达成了什么里程碑？", opts: ["KPL 4000 助攻", "KPL 2000 击杀", "KPL 600 胜", "KPL 3000 助攻"], a: 0, tip: "KPL 4000 助攻。" },
       { q: "截至 2026 年，一诺的 KPL 冠军数是？", opts: ["7", "6", "8", "5"], a: 0, tip: "七冠六亚。" },
-      { q: "一诺的 ID「一诺」含义是？", opts: ["一诺千金", "一生之诺", "一诺倾心", "一诺无辞"], a: 0, tip: "一诺千金。" }
+      { q: "2023 年杭州亚运会，一诺参加的项目是？", opts: ["王者荣耀（亚运版）", "英雄联盟", "和平精英", "街霸"], a: 0, tip: "王者荣耀（亚运版），中国队夺金。" }
     ];
 
     var idx = 0, score = 0, locked = false;
+
+    function shuffleArr(a) {
+      var arr = a.slice();
+      for (var i = arr.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var t = arr[i];
+        arr[i] = arr[j];
+        arr[j] = t;
+      }
+      return arr;
+    }
 
     function renderQuiz() {
       if (idx >= questions.length) {
@@ -389,9 +407,12 @@
         return;
       }
       var q = questions[idx];
+      var opts = shuffleArr(q.opts.map(function (o, i) { return { t: o, ok: i === q.a }; }));
+      var correct = 0;
       var html = '<p class="game-q">' + (idx + 1) + ". " + q.q + '</p><div class="game-opts">';
-      q.opts.forEach(function (o, i) {
-        html += '<button class="game-opt" data-i="' + i + '">' + o + "</button>";
+      opts.forEach(function (o, i) {
+        if (o.ok) correct = i;
+        html += '<button class="game-opt" data-i="' + i + '">' + o.t + "</button>";
       });
       html += "</div>";
       body.innerHTML = html;
@@ -403,10 +424,10 @@
           var i = parseInt(btn.getAttribute("data-i"), 10);
           body.querySelectorAll(".game-opt").forEach(function (b) {
             var bi = parseInt(b.getAttribute("data-i"), 10);
-            b.classList.add(bi === q.a ? "ok" : bi === i ? "no" : "dim");
+            b.classList.add(bi === correct ? "ok" : bi === i ? "no" : "dim");
             b.disabled = true;
           });
-          if (i === q.a) score++;
+          if (i === correct) score++;
           var tip = document.createElement("p");
           tip.className = "game-tip";
           tip.textContent = q.tip;
@@ -415,7 +436,7 @@
             idx++;
             locked = false;
             renderQuiz();
-          }, 1300);
+          }, 1400);
         });
       });
     }
@@ -443,10 +464,24 @@
       { clue: "2023 世冠 FMVP 的定制皮肤给了这个英雄。", opts: ["公孙离", "孙尚香", "马可波罗", "鲁班七号"], a: 0 },
       { clue: "2024 春季赛，这个英雄出场 9 战全胜。", opts: ["敖隐", "公孙离", "狄仁杰", "虞姬"], a: 0 },
       { clue: "2019 秋季赛对阵 TS，他用这个英雄拿下五连绝世。", opts: ["孙尚香", "公孙离", "鲁班七号", "马可波罗"], a: 0 },
-      { clue: "2021 败者组决赛第六局，他用这个英雄拿下 MVP。", opts: ["百里守约", "公孙离", "孙尚香", "虞姬"], a: 0 }
+      { clue: "2021 败者组决赛第六局，他用这个英雄拿下 MVP。", opts: ["百里守约", "公孙离", "孙尚香", "虞姬"], a: 0 },
+      { clue: "2019 秋季赛败者组半决赛决胜局，他的这个英雄「一推」终结比赛。", opts: ["公孙离", "孙尚香", "马可波罗", "敖隐"], a: 0 },
+      { clue: "2020 春决下半场，他用这个英雄拿下三杀，把比赛拖入巅峰对决。", opts: ["公孙离", "孙尚香", "鲁班七号", "百里守约"], a: 0 },
+      { clue: "2024 年总决赛，这个英雄的第一视角名场面被粉丝反复回看。", opts: ["鲁班七号", "公孙离", "孙尚香", "敖隐"], a: 0 }
     ];
 
     var idx = 0, score = 0, locked = false;
+
+    function shuffleArr(a) {
+      var arr = a.slice();
+      for (var i = arr.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var t = arr[i];
+        arr[i] = arr[j];
+        arr[j] = t;
+      }
+      return arr;
+    }
 
     function renderGuess() {
       if (idx >= rounds.length) {
@@ -455,9 +490,12 @@
         return;
       }
       var r = rounds[idx];
+      var opts = shuffleArr(r.opts.map(function (o, i) { return { t: o, ok: i === r.a }; }));
+      var correct = 0;
       var html = '<p class="game-q">' + (idx + 1) + ". " + r.clue + '</p><div class="game-opts">';
-      r.opts.forEach(function (o, i) {
-        html += '<button class="game-opt" data-i="' + i + '">' + o + "</button>";
+      opts.forEach(function (o, i) {
+        if (o.ok) correct = i;
+        html += '<button class="game-opt" data-i="' + i + '">' + o.t + "</button>";
       });
       html += "</div>";
       body.innerHTML = html;
@@ -469,10 +507,10 @@
           var i = parseInt(btn.getAttribute("data-i"), 10);
           body.querySelectorAll(".game-opt").forEach(function (b) {
             var bi = parseInt(b.getAttribute("data-i"), 10);
-            b.classList.add(bi === r.a ? "ok" : bi === i ? "no" : "dim");
+            b.classList.add(bi === correct ? "ok" : bi === i ? "no" : "dim");
             b.disabled = true;
           });
-          if (i === r.a) score++;
+          if (i === correct) score++;
           scoreEl.textContent = score + " / " + rounds.length;
           setTimeout(function () {
             idx++;
@@ -506,7 +544,9 @@
       { event: "首夺 KPL 冠军", year: "2019" },
       { event: "达成 2000 击杀", year: "2022" },
       { event: "首夺 FMVP", year: "2023" },
-      { event: "捧起第七冠", year: "2025" }
+      { event: "夏冠 + 年总双冠", year: "2024" },
+      { event: "捧起第七冠", year: "2025" },
+      { event: "爱知·名古屋亚运会", year: "2026" }
     ];
     var left = [], right = [], selLeft = null, matched = 0, locked = false;
 
