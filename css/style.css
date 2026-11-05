@@ -109,6 +109,7 @@ button { font-family: inherit; }
 }
 .hub-card {
   position: relative;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -127,6 +128,27 @@ button { font-family: inherit; }
   border-color: var(--red);
   box-shadow: var(--shadow-sm);
 }
+.hub-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.26;
+  transition: transform 0.5s ease, opacity 0.3s ease;
+}
+.hub-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(15, 16, 19, 0.25) 0%, rgba(15, 16, 19, 0.85) 100%);
+  pointer-events: none;
+}
+.hub-card:hover .hub-bg { transform: scale(1.06); opacity: 0.4; }
+.hub-num,
+.hub-title,
+.hub-desc,
+.hub-arrow { position: relative; z-index: 1; }
 .hub-num {
   font-size: 11px;
   font-weight: 800;
