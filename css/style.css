@@ -1660,6 +1660,7 @@ button { font-family: inherit; }
   .gallery-grid { grid-template-columns: repeat(2, 1fr); }
   .quotes-grid { grid-template-columns: 1fr; }
   .hub-grid { grid-template-columns: repeat(2, 1fr); }
+  .play-grid { grid-template-columns: 1fr; }
   .tl-card-photo { grid-template-columns: 80px 1fr; gap: 12px; }
   .tl-photo { width: 80px; }
   .tl-acc-year { width: 44px; font-size: 18px; }
@@ -1673,6 +1674,64 @@ button { font-family: inherit; }
   .hub-grid { grid-template-columns: 1fr; }
   .hero-tags span { font-size: 11px; }
 }
+
+/* ---------- 互动玩法 ---------- */
+.play-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  max-width: 980px;
+  margin: 0 auto;
+}
+.game-card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--card);
+  padding: 20px;
+}
+.game-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+.game-head h3 { font-size: 16px; font-weight: 800; }
+.game-score { font-size: 12px; font-weight: 800; color: var(--red); }
+.game-q { margin-bottom: 12px; font-size: 14px; font-weight: 700; line-height: 1.6; }
+.game-opts { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.game-opt {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: var(--card-2);
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+.game-opt:hover { border-color: var(--red); color: var(--red); }
+.game-opt.ok { border-color: #2fbf71; color: #2fbf71; background: rgba(47, 191, 113, 0.08); }
+.game-opt.no { border-color: var(--red); color: var(--red); background: rgba(255, 74, 90, 0.08); }
+.game-opt.dim { opacity: 0.45; }
+.game-tip { margin-top: 12px; font-size: 12px; line-height: 1.6; color: var(--text-2); }
+.game-done { padding: 16px 0; text-align: center; }
+.game-done strong { display: block; font-size: 30px; color: var(--red); }
+.game-done p { margin-top: 8px; font-size: 13px; color: var(--text-2); }
+.game-foot { margin-top: 14px; }
+.game-foot button {
+  padding: 9px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+.game-foot button:hover { border-color: var(--red); color: var(--red); }
 
 /* 减少动态偏好 */
 @media (prefers-reduced-motion: reduce) {

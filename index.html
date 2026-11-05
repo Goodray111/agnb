@@ -94,6 +94,7 @@
           <button class="hub-card" data-target="gallery"><img class="hub-bg" src="assets/photo-artist.jpg" alt="" loading="lazy" /><span class="hub-num">06</span><span class="hub-title">图集</span><span class="hub-desc">捧杯 · 定妆 · 海报</span><span class="hub-arrow">→</span></button>
           <button class="hub-card" data-target="quotes"><img class="hub-bg" src="assets/photo-makeup.jpg" alt="" loading="lazy" /><span class="hub-num">07</span><span class="hub-title">语录</span><span class="hub-desc">温暖又有力量的句子</span><span class="hub-arrow">→</span></button>
           <button class="hub-card" data-target="message"><img class="hub-bg" src="assets/photo-xubucheng.jpg" alt="" loading="lazy" /><span class="hub-num">08</span><span class="hub-title">留言板</span><span class="hub-desc">写下一句应援</span><span class="hub-arrow">→</span></button>
+          <button class="hub-card" data-target="play"><img class="hub-bg" src="assets/photo-makeup.jpg" alt="" loading="lazy" /><span class="hub-num">09</span><span class="hub-title">互动玩法</span><span class="hub-desc">测测你有多了解一诺</span><span class="hub-arrow">→</span></button>
         </div>
       </div>
     </section>
@@ -711,6 +712,41 @@
           <figure class="quote-card"><blockquote>「输比赛会内耗，有无数个夜晚想不打了，但醒来还是坚持走下去。」</blockquote><figcaption>— 据《人物》专访报道</figcaption></figure>
         </div>
         <p class="sample-note">* 语录参考：《人物》专访（2026-10）、虎扑流言板。</p>
+      </div>
+    </section>
+
+    <!-- ===== 互动玩法 ===== -->
+    <section class="view section section-alt" id="play">
+      <div class="wrap">
+        <header class="section-head reveal">
+          <span class="section-label">PLAY</span>
+          <h2>互动玩法</h2>
+          <p>测测你有多了解一诺</p>
+        </header>
+
+        <div class="play-grid">
+          <div class="game-card reveal">
+            <div class="game-head">
+              <h3>一诺知识问答</h3>
+              <span class="game-score" id="quizScore">0 / 0</span>
+            </div>
+            <div class="game-body" id="quizBody"></div>
+            <div class="game-foot">
+              <button id="quizRestart">再来一轮</button>
+            </div>
+          </div>
+
+          <div class="game-card reveal">
+            <div class="game-head">
+              <h3>猜英雄</h3>
+              <span class="game-score" id="guessScore">0 / 0</span>
+            </div>
+            <div class="game-body" id="guessBody"></div>
+            <div class="game-foot">
+              <button id="guessRestart">再来一轮</button>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 

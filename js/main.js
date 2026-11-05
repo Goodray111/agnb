@@ -359,6 +359,140 @@
     onScroll();
   }
 
+  /* ---------- 互动玩法：知识问答 ---------- */
+  (function () {
+    var body = document.getElementById("quizBody");
+    var scoreEl = document.getElementById("quizScore");
+    var restart = document.getElementById("quizRestart");
+    if (!body) return;
+
+    var questions = [
+      { q: "一诺的本名是？", opts: ["徐必成", "徐必达", "许必成", "徐一诺"], a: 0, tip: "徐必成，2001 年 12 月 26 日生于江西抚州南丰。" },
+      { q: "一诺的生日是？", opts: ["2001.12.26", "2002.01.26", "2001.06.12", "2000.12.26"], a: 0, tip: "2001 年 12 月 26 日，ID「一诺」取自「一诺千金」。" },
+      { q: "一诺在 KPL 的首秀英雄是？", opts: ["花木兰", "关羽", "公孙离", "孙尚香"], a: 0, tip: "2018.04.21 首秀，用花木兰对阵 eStarPro。" },
+      { q: "2023 世冠 KIC 总决赛，AG 的比分是？", opts: ["4:2", "4:1", "4:3", "3:4"], a: 0, tip: "4:2 击败北京 WB，一诺拿下 FMVP。" },
+      { q: "一诺的 FMVP 定制皮肤英雄是？", opts: ["公孙离", "孙尚香", "马可波罗", "敖隐"], a: 0, tip: "公孙离——「云诺千山」。" },
+      { q: "2020.05.08，一诺用裴擒虎达成了什么？", opts: ["KPL 1000 击杀", "KPL 2000 击杀", "KPL 4000 助攻", "KPL 600 胜"], a: 0, tip: "用裴擒虎达成 KPL 1000 击杀。" },
+      { q: "截至 2026 年，一诺的 KPL 冠军数是？", opts: ["7", "6", "8", "5"], a: 0, tip: "七冠六亚。" },
+      { q: "一诺的 ID「一诺」含义是？", opts: ["一诺千金", "一生之诺", "一诺倾心", "一诺无辞"], a: 0, tip: "一诺千金。" }
+    ];
+
+    var idx = 0, score = 0, locked = false;
+
+    function renderQuiz() {
+      if (idx >= questions.length) {
+        var pct = Math.round((score / questions.length) * 100);
+        var title = pct === 100 ? "一诺十级学者" : pct >= 70 ? "资深 i 人" : pct >= 40 ? "路人粉" : "路人";
+        body.innerHTML = '<div class="game-done"><strong>' + score + " / " + questions.length + "</strong><p>" + title + " · 正确率 " + pct + "%</p></div>";
+        scoreEl.textContent = score + " / " + questions.length;
+        return;
+      }
+      var q = questions[idx];
+      var html = '<p class="game-q">' + (idx + 1) + ". " + q.q + '</p><div class="game-opts">';
+      q.opts.forEach(function (o, i) {
+        html += '<button class="game-opt" data-i="' + i + '">' + o + "</button>";
+      });
+      html += "</div>";
+      body.innerHTML = html;
+      scoreEl.textContent = score + " / " + questions.length;
+      body.querySelectorAll(".game-opt").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          if (locked) return;
+          locked = true;
+          var i = parseInt(btn.getAttribute("data-i"), 10);
+          body.querySelectorAll(".game-opt").forEach(function (b) {
+            var bi = parseInt(b.getAttribute("data-i"), 10);
+            b.classList.add(bi === q.a ? "ok" : bi === i ? "no" : "dim");
+            b.disabled = true;
+          });
+          if (i === q.a) score++;
+          var tip = document.createElement("p");
+          tip.className = "game-tip";
+          tip.textContent = q.tip;
+          body.appendChild(tip);
+          setTimeout(function () {
+            idx++;
+            locked = false;
+            renderQuiz();
+          }, 1300);
+        });
+      });
+    }
+
+    if (restart) {
+      restart.addEventListener("click", function () {
+        idx = 0;
+        score = 0;
+        locked = false;
+        renderQuiz();
+      });
+    }
+    renderQuiz();
+  })();
+
+  /* ---------- 互动玩法：猜英雄 ---------- */
+  (function () {
+    var body = document.getElementById("guessBody");
+    var scoreEl = document.getElementById("guessScore");
+    var restart = document.getElementById("guessRestart");
+    if (!body) return;
+
+    var rounds = [
+      { clue: "2020.05.08，他用这个英雄达成 KPL 1000 击杀。", opts: ["裴擒虎", "公孙离", "孙尚香", "百里守约"], a: 0 },
+      { clue: "2023 世冠 FMVP 的定制皮肤给了这个英雄。", opts: ["公孙离", "孙尚香", "马可波罗", "鲁班七号"], a: 0 },
+      { clue: "2024 春季赛，这个英雄出场 9 战全胜。", opts: ["敖隐", "公孙离", "狄仁杰", "虞姬"], a: 0 },
+      { clue: "2019 秋季赛对阵 TS，他用这个英雄拿下五连绝世。", opts: ["孙尚香", "公孙离", "鲁班七号", "马可波罗"], a: 0 },
+      { clue: "2021 败者组决赛第六局，他用这个英雄拿下 MVP。", opts: ["百里守约", "公孙离", "孙尚香", "虞姬"], a: 0 }
+    ];
+
+    var idx = 0, score = 0, locked = false;
+
+    function renderGuess() {
+      if (idx >= rounds.length) {
+        body.innerHTML = '<div class="game-done"><strong>' + score + " / " + rounds.length + "</strong><p>猜英雄完成</p></div>";
+        scoreEl.textContent = score + " / " + rounds.length;
+        return;
+      }
+      var r = rounds[idx];
+      var html = '<p class="game-q">' + (idx + 1) + ". " + r.clue + '</p><div class="game-opts">';
+      r.opts.forEach(function (o, i) {
+        html += '<button class="game-opt" data-i="' + i + '">' + o + "</button>";
+      });
+      html += "</div>";
+      body.innerHTML = html;
+      scoreEl.textContent = score + " / " + rounds.length;
+      body.querySelectorAll(".game-opt").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          if (locked) return;
+          locked = true;
+          var i = parseInt(btn.getAttribute("data-i"), 10);
+          body.querySelectorAll(".game-opt").forEach(function (b) {
+            var bi = parseInt(b.getAttribute("data-i"), 10);
+            b.classList.add(bi === r.a ? "ok" : bi === i ? "no" : "dim");
+            b.disabled = true;
+          });
+          if (i === r.a) score++;
+          scoreEl.textContent = score + " / " + rounds.length;
+          setTimeout(function () {
+            idx++;
+            locked = false;
+            renderGuess();
+          }, 1100);
+        });
+      });
+    }
+
+    if (restart) {
+      restart.addEventListener("click", function () {
+        idx = 0;
+        score = 0;
+        locked = false;
+        renderGuess();
+      });
+    }
+    renderGuess();
+  })();
+
   /* ---------- 年份 ---------- */
   var yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
