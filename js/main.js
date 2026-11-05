@@ -746,7 +746,7 @@
       el.textContent = "P." + el.textContent;
     });
 
-    var chapters = ["about", "story", "timeline", "highlights", "stats", "schedule", "quotes", "play", "gallery", "message"];
+    var chapters = ["about", "story", "timeline", "highlights", "stats", "schedule", "quotes", "play", "gallery", "message", "watch"];
     chapters.forEach(function (id, i) {
       var sec = document.getElementById(id);
       if (!sec) return;
