@@ -1662,6 +1662,7 @@ button { font-family: inherit; }
   .hub-grid { grid-template-columns: repeat(2, 1fr); }
   .play-grid { grid-template-columns: 1fr; }
   .facts-grid { grid-template-columns: 1fr; }
+  .sec-deco { display: none; }
   .tl-card-photo { grid-template-columns: 80px 1fr; gap: 12px; }
   .tl-photo { width: 80px; }
   .tl-acc-year { width: 44px; font-size: 18px; }
@@ -1958,6 +1959,43 @@ button { font-family: inherit; }
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-3px); }
 }
+
+/* 章节卡通装饰 */
+.section { position: relative; }
+.sec-deco {
+  position: absolute;
+  top: 96px;
+  right: 3.5%;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  pointer-events: none;
+}
+.sd-item {
+  font-size: 26px;
+  opacity: 0.85;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.4));
+  animation: sdFloat 5s ease-in-out infinite;
+}
+@keyframes sdFloat {
+  0%, 100% { transform: translateY(0) rotate(-6deg); }
+  50% { transform: translateY(-10px) rotate(6deg); }
+}
+.footer-toys {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+.footer-toys span {
+  font-size: 20px;
+  animation: sdFloat 5s ease-in-out infinite;
+}
+.footer-toys span:nth-child(2) { animation-delay: 0.5s; }
+.footer-toys span:nth-child(3) { animation-delay: 1s; }
+.footer-toys span:nth-child(4) { animation-delay: 1.5s; }
+.footer-toys span:nth-child(5) { animation-delay: 2s; }
 
 /* 导航下划线 */
 .nav-links a {

@@ -748,6 +748,36 @@
     });
   })();
 
+  /* ---------- 动态效果：章节卡通装饰 ---------- */
+  (function () {
+    var map = {
+      about: ["🎯", "✨"],
+      story: ["📖", "⭐"],
+      timeline: ["🏆", "⏳"],
+      highlights: ["⚡", "👑"],
+      stats: ["📊", "🏆"],
+      quotes: ["💬", "✨"],
+      play: ["🎮", "🎲"],
+      gallery: ["📸", "⭐"],
+      message: ["💌", "❤️"]
+    };
+    Object.keys(map).forEach(function (id) {
+      var sec = document.getElementById(id);
+      if (!sec) return;
+      var deco = document.createElement("span");
+      deco.className = "sec-deco";
+      deco.setAttribute("aria-hidden", "true");
+      map[id].forEach(function (emoji, i) {
+        var s = document.createElement("span");
+        s.className = "sd-item";
+        s.textContent = emoji;
+        s.style.animationDelay = (i * 0.7) + "s";
+        deco.appendChild(s);
+      });
+      sec.appendChild(deco);
+    });
+  })();
+
   /* ---------- 年份 ---------- */
   var yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
