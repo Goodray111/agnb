@@ -139,46 +139,7 @@
     });
   }
 
-  /* ---------- 图集大图预览 ---------- */
-  var lightbox = document.getElementById("lightbox");
-  var lbMedia = document.getElementById("lbMedia");
-  var lbTitle = document.getElementById("lbTitle");
-  var lbDesc = document.getElementById("lbDesc");
-  var lbClose = document.getElementById("lbClose");
-
-  function openLightbox(tile) {
-    if (!lightbox) return;
-    var title = tile.getAttribute("data-title") || "图片预览";
-    var desc = tile.getAttribute("data-desc") || "";
-    lbTitle.textContent = title;
-    lbDesc.textContent = desc;
-    lbMedia.className = "lb-media " + (tile.classList.contains("grad-1") ? "grad-1" : tile.classList.contains("grad-2") ? "grad-2" : tile.classList.contains("grad-3") ? "grad-3" : "grad-4");
-    lbMedia.textContent = title;
-    lightbox.classList.add("open");
-    lightbox.setAttribute("aria-hidden", "false");
-  }
-
-  function closeLightbox() {
-    if (!lightbox) return;
-    lightbox.classList.remove("open");
-    lightbox.setAttribute("aria-hidden", "true");
-  }
-
-  document.querySelectorAll(".g-tile").forEach(function (tile) {
-    tile.addEventListener("click", function () {
-      openLightbox(tile);
-    });
-  });
-
-  if (lbClose) lbClose.addEventListener("click", closeLightbox);
-  if (lightbox) {
-    lightbox.addEventListener("click", function (e) {
-      if (e.target === lightbox) closeLightbox();
-    });
-  }
-  document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape") closeLightbox();
-  });
+  /* ---------- 图集大图预览（新实现见下方「图集灯箱」） ---------- */
 
   /* ---------- 赛场历程（手风琴） ---------- */
   var accItems = document.querySelectorAll(".tl-acc-item");
@@ -799,6 +760,63 @@
         pn.textContent = "0" + (i + 1) + " / 09";
         sec.appendChild(pn);
       }
+    });
+  })();
+
+  /* ---------- 图集灯箱 ---------- */
+  (function () {
+    var lb = document.getElementById("lightbox");
+    var img = document.getElementById("lbImg");
+    var count = document.getElementById("lbCount");
+    if (!lb || !img) return;
+
+    var tiles = Array.prototype.slice.call(document.querySelectorAll(".g-tile"));
+    var current = 0;
+
+    function show(i) {
+      if (!tiles.length) return;
+      current = (i + tiles.length) % tiles.length;
+      var a = tiles[current];
+      img.src = a.getAttribute("href");
+      var im = a.querySelector("img");
+      img.alt = im ? im.alt : "";
+      if (count) count.textContent = (current + 1) + " / " + tiles.length;
+    }
+
+    function open(i) {
+      show(i);
+      lb.classList.add("open");
+      lb.setAttribute("aria-hidden", "false");
+    }
+
+    function close() {
+      lb.classList.remove("open");
+      lb.setAttribute("aria-hidden", "true");
+      img.removeAttribute("src");
+    }
+
+    tiles.forEach(function (a, i) {
+      a.addEventListener("click", function (e) {
+        e.preventDefault();
+        open(i);
+      });
+    });
+
+    var lbClose = document.getElementById("lbClose");
+    var lbPrev = document.getElementById("lbPrev");
+    var lbNext = document.getElementById("lbNext");
+    if (lbClose) lbClose.addEventListener("click", close);
+    if (lbPrev) lbPrev.addEventListener("click", function () { show(current - 1); });
+    if (lbNext) lbNext.addEventListener("click", function () { show(current + 1); });
+    lb.addEventListener("click", function (e) {
+      if (e.target === lb) close();
+    });
+
+    document.addEventListener("keydown", function (e) {
+      if (!lb.classList.contains("open")) return;
+      if (e.key === "Escape") close();
+      if (e.key === "ArrowLeft") show(current - 1);
+      if (e.key === "ArrowRight") show(current + 1);
     });
   })();
 

@@ -2053,6 +2053,120 @@ button { font-family: inherit; }
   opacity: 0.7;
 }
 
+/* ---------- 图片灯箱 ---------- */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(8, 9, 11, 0.94);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+.lightbox.open { opacity: 1; pointer-events: auto; }
+.lb-img {
+  max-width: min(92vw, 1100px);
+  max-height: 82vh;
+  border-radius: 10px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+}
+.lb-close {
+  position: absolute;
+  top: 24px;
+  right: 28px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 22px;
+  cursor: pointer;
+}
+.lb-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 26px;
+  cursor: pointer;
+}
+.lb-prev { left: 24px; }
+.lb-next { right: 24px; }
+.lb-count {
+  position: absolute;
+  bottom: 26px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* ---------- 封底 ---------- */
+.endcard {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 40px 28px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--card);
+  text-align: center;
+}
+.endcard-title {
+  font-size: 24px;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+}
+.endcard-text {
+  margin-top: 14px;
+  font-size: 13px;
+  line-height: 1.9;
+  color: var(--text-2);
+}
+.endcard-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+.endcard-meta span {
+  padding: 5px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  font-size: 11px;
+  color: var(--text-2);
+}
+.endcard-btn {
+  margin-top: 24px;
+  padding: 10px 22px;
+  border-radius: 999px;
+  border: 1px solid var(--red);
+  background: var(--red);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+/* ---------- 专辑衬线细节 ---------- */
+.section-label,
+.cover-vol,
+.chapter-page,
+.hub-num,
+.lb-count {
+  font-family: Georgia, "Times New Roman", serif;
+}
+
 /* 导航下划线 */
 .nav-links a {
   position: relative;

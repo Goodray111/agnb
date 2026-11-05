@@ -80,7 +80,7 @@
           <div class="hero-tags">
             <span>粉丝制作</span><span>非官方</span><span>持续更新</span>
           </div>
-          <a href="#about" class="hero-cta">开始阅读 <i>↓</i></a>
+          <a href="#about" class="hero-cta">翻开专辑 <i>↓</i></a>
           <p class="hero-note">2024 KPL 年度总决赛 · 成都AG超玩会</p>
         </div>
         <figure class="hero-media">
@@ -144,6 +144,7 @@
           <button class="hub-card" data-target="quotes"><img class="hub-bg" src="assets/photo-makeup.jpg" alt="" loading="lazy" /><span class="hub-num">07</span><span class="hub-title">语录</span><span class="hub-desc">温暖又有力量的句子</span><span class="hub-arrow">→</span></button>
           <button class="hub-card" data-target="message"><img class="hub-bg" src="assets/photo-xubucheng.jpg" alt="" loading="lazy" /><span class="hub-num">08</span><span class="hub-title">留言板</span><span class="hub-desc">写下一句应援</span><span class="hub-arrow">→</span></button>
           <button class="hub-card" data-target="play"><img class="hub-bg" src="assets/photo-makeup.jpg" alt="" loading="lazy" /><span class="hub-num">09</span><span class="hub-title">互动玩法</span><span class="hub-desc">测测你有多了解一诺</span><span class="hub-arrow">→</span></button>
+          <button class="hub-card" data-target="end"><img class="hub-bg" src="assets/about-yinuo.jpg" alt="" loading="lazy" /><span class="hub-num">10</span><span class="hub-title">封底</span><span class="hub-desc">感谢你读到最后一页</span><span class="hub-arrow">→</span></button>
         </div>
       </div>
     </section>
@@ -890,6 +891,26 @@
         </div>
       </div>
     </section>
+    <!-- ===== 封底 ===== -->
+    <section class="view section" id="end">
+      <div class="wrap">
+        <header class="section-head">
+          <span class="section-label">END</span>
+          <h2>封底</h2>
+          <p>把热爱留在这里</p>
+        </header>
+        <div class="endcard">
+          <p class="endcard-title">少年一诺，矢志不渝</p>
+          <p class="endcard-text">这一本关于一诺的专辑，到这里就翻完了。感谢你读到最后一页。</p>
+          <div class="endcard-meta">
+            <span>VOL. 01 · 2026</span>
+            <span>粉丝作品 · 非官方</span>
+            <span>资料 / 图片 / 视频来自公开渠道</span>
+          </div>
+          <button class="endcard-btn" data-target="home">回到封面 ↑</button>
+        </div>
+      </div>
+    </section>
   </main>
 
   <!-- ===== 页脚 ===== -->
@@ -913,6 +934,15 @@
       <video id="vmVideo" controls playsinline preload="metadata"></video>
       <a class="vm-link" id="vmLink" href="#" target="_blank" rel="noopener">打开视频文件 ↗</a>
     </div>
+  </div>
+
+  <!-- ===== 图片灯箱 ===== -->
+  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="图片查看">
+    <button class="lb-close" id="lbClose" aria-label="关闭">×</button>
+    <button class="lb-nav lb-prev" id="lbPrev" aria-label="上一张">‹</button>
+    <img class="lb-img" id="lbImg" src="" alt="" />
+    <button class="lb-nav lb-next" id="lbNext" aria-label="下一张">›</button>
+    <p class="lb-count" id="lbCount"></p>
   </div>
 
   <button class="back-hub" id="backHub" data-target="home">← 返回目录</button>
