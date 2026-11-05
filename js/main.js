@@ -821,6 +821,46 @@
     });
   })();
 
+  /* ---------- 六边形对比图 ---------- */
+  (function () {
+    var svg = document.getElementById("radarChart");
+    if (!svg) return;
+
+    var dims = ["击杀", "生存", "经济", "输出", "参团", "KDA"];
+    var players = [
+      { color: "#ff4a5a", values: [92, 84, 95, 93, 88, 94] },
+      { color: "#4a9eff", values: [89, 82, 91, 90, 86, 89] },
+      { color: "#8a8a8a", values: [78, 74, 80, 78, 76, 77] }
+    ];
+    var cx = 210, cy = 195, R = 132, n = dims.length;
+
+    function point(i, r) {
+      var ang = -Math.PI / 2 + (i * 2 * Math.PI) / n;
+      return [cx + Math.cos(ang) * r, cy + Math.sin(ang) * r];
+    }
+
+    var html = "";
+    [0.2, 0.4, 0.6, 0.8, 1].forEach(function (k) {
+      var pts = [];
+      for (var i = 0; i < n; i++) pts.push(point(i, R * k).join(","));
+      html += '<polygon points="' + pts.join(" ") + '" fill="none" stroke="rgba(255,255,255,0.09)" />';
+    });
+    for (var i = 0; i < n; i++) {
+      var p = point(i, R);
+      html += '<line x1="' + cx + '" y1="' + cy + '" x2="' + p[0] + '" y2="' + p[1] + '" stroke="rgba(255,255,255,0.09)" />';
+    }
+    for (var j = 0; j < n; j++) {
+      var lp = point(j, R + 24);
+      html += '<text x="' + lp[0] + '" y="' + lp[1] + '" text-anchor="middle" dominant-baseline="middle" font-size="12" fill="rgba(255,255,255,0.62)">' + dims[j] + "</text>";
+    }
+    players.forEach(function (pl) {
+      var pts = [];
+      for (var k = 0; k < n; k++) pts.push(point(k, R * (pl.values[k] / 100)).join(","));
+      html += '<polygon points="' + pts.join(" ") + '" fill="' + pl.color + '" fill-opacity="0.13" stroke="' + pl.color + '" stroke-width="2" />';
+    });
+    svg.innerHTML = html;
+  })();
+
   /* ---------- 年份 ---------- */
   var yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
