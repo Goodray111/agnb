@@ -53,29 +53,55 @@
     });
   }
 
-  /* ---------- 导航高亮（滚动监听） ---------- */
-  var sections = document.querySelectorAll("main section[id]");
-  var linkMap = {};
-  document.querySelectorAll('.nav-links a[href^="#"]').forEach(function (a) {
-    linkMap[a.getAttribute("href").slice(1)] = a;
+  /* ---------- 站内视图切换（目录 → 各章节） ---------- */
+  var views = document.querySelectorAll(".view");
+  var backHub = document.getElementById("backHub");
+  var navAnchors = document.querySelectorAll('.nav-links a[href^="#"]');
+
+  function setActiveNav(id) {
+    navAnchors.forEach(function (a) {
+      a.classList.toggle("active", a.getAttribute("href") === "#" + id);
+    });
+  }
+
+  function showView(id) {
+    if (!document.getElementById(id)) id = "home";
+    views.forEach(function (v) {
+      v.classList.toggle("is-active", v.id === id);
+    });
+    if (backHub) backHub.classList.toggle("show", id !== "home");
+    setActiveNav(id);
+    window.scrollTo(0, 0);
+    var activeView = document.getElementById(id);
+    if (activeView) {
+      activeView.querySelectorAll(".reveal").forEach(function (el) {
+        el.classList.add("in");
+      });
+    }
+    try {
+      history.replaceState(null, "", "#" + id);
+    } catch (e) {}
+  }
+
+  document.querySelectorAll("[data-target]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      showView(btn.getAttribute("data-target"));
+    });
   });
 
-  if ("IntersectionObserver" in window && sections.length) {
-    var navObserver = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (!entry.isIntersecting) return;
-          var id = entry.target.id;
-          Object.keys(linkMap).forEach(function (k) {
-            linkMap[k].classList.toggle("active", k === id);
-          });
-        });
-      },
-      { rootMargin: "-45% 0px -50% 0px", threshold: 0 }
-    );
-    sections.forEach(function (s) {
-      navObserver.observe(s);
+  navAnchors.forEach(function (a) {
+    a.addEventListener("click", function (e) {
+      var id = a.getAttribute("href").slice(1);
+      if (document.getElementById(id)) {
+        e.preventDefault();
+        showView(id);
+      }
     });
+  });
+
+  if (location.hash) {
+    var initialHash = location.hash.slice(1);
+    if (document.getElementById(initialHash)) showView(initialHash);
   }
 
   /* ---------- 滚动出现动画 ---------- */

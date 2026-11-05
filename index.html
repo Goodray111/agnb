@@ -32,7 +32,7 @@
   <!-- ===== 顶部导航 ===== -->
   <header class="nav" id="nav">
     <div class="nav-inner">
-      <a href="#top" class="brand" aria-label="回到顶部">
+      <a href="#home" class="brand" aria-label="回到顶部">
         <span class="brand-mark">AG</span>
         <span class="brand-text">一诺<em>YINUO</em></span>
       </a>
@@ -56,8 +56,9 @@
   </header>
 
   <main id="top">
-    <!-- ===== 首页 Banner ===== -->
-    <section class="hero" id="home">
+    <!-- ===== 首页 / 目录 ===== -->
+    <section class="view is-active" id="home">
+      <div class="hero">
       <div class="hero-bg" aria-hidden="true">
         <span class="beam beam-1"></span>
         <span class="beam beam-2"></span>
@@ -80,10 +81,25 @@
           <img src="assets/hero-agnb.jpg" alt="2024 KPL 年度总决赛 成都AG超玩会" />
         </figure>
       </div>
+      </div>
+
+      <div class="hub">
+        <p class="hub-head">选择一个部分，进入阅读</p>
+        <div class="hub-grid">
+          <button class="hub-card" data-target="about"><span class="hub-num">01</span><span class="hub-title">关于一诺</span><span class="hub-desc">档案 · 生日 · 位置 · 招牌英雄</span><span class="hub-arrow">→</span></button>
+          <button class="hub-card" data-target="story"><span class="hub-num">02</span><span class="hub-title">成长故事</span><span class="hub-desc">从警校少年到「老头射手」</span><span class="hub-arrow">→</span></button>
+          <button class="hub-card" data-target="timeline"><span class="hub-num">03</span><span class="hub-title">赛场历程</span><span class="hub-desc">2017–2026 点击式时间线</span><span class="hub-arrow">→</span></button>
+          <button class="hub-card" data-target="highlights"><span class="hub-num">04</span><span class="hub-title">高光集锦</span><span class="hub-desc">名场面 · 五杀 · FMVP</span><span class="hub-arrow">→</span></button>
+          <button class="hub-card" data-target="stats"><span class="hub-num">05</span><span class="hub-title">赛事数据</span><span class="hub-desc">7 冠 6 亚 · 逐赛季数据</span><span class="hub-arrow">→</span></button>
+          <button class="hub-card" data-target="gallery"><span class="hub-num">06</span><span class="hub-title">图集</span><span class="hub-desc">捧杯 · 定妆 · 海报</span><span class="hub-arrow">→</span></button>
+          <button class="hub-card" data-target="quotes"><span class="hub-num">07</span><span class="hub-title">语录</span><span class="hub-desc">温暖又有力量的句子</span><span class="hub-arrow">→</span></button>
+          <button class="hub-card" data-target="message"><span class="hub-num">08</span><span class="hub-title">留言板</span><span class="hub-desc">写下一句应援</span><span class="hub-arrow">→</span></button>
+        </div>
+      </div>
     </section>
 
     <!-- ===== 关于一诺 ===== -->
-    <section class="section" id="about">
+    <section class="view section" id="about">
       <div class="wrap">
         <div class="section-head">
           <span class="section-label">ABOUT</span>
@@ -121,7 +137,7 @@
     </section>
 
     <!-- ===== 成长故事 ===== -->
-    <section class="section section-alt" id="story">
+    <section class="view section section-alt" id="story">
       <div class="wrap">
         <div class="section-head">
           <span class="section-label">STORY</span>
@@ -164,7 +180,7 @@
     </section>
 
     <!-- ===== 赛场历程 ===== -->
-    <section class="section section-alt" id="timeline">
+    <section class="view section section-alt" id="timeline">
       <div class="wrap">
         <div class="section-head">
           <span class="section-label">TIMELINE</span>
@@ -377,7 +393,7 @@
     </section>
 
     <!-- ===== 高光集锦 ===== -->
-    <section class="section" id="highlights">
+    <section class="view section" id="highlights">
       <div class="wrap">
         <div class="section-head">
           <span class="section-label">HIGHLIGHTS</span>
@@ -443,7 +459,7 @@
     </section>
 
     <!-- ===== 赛事数据 ===== -->
-    <section class="section section-alt" id="stats">
+    <section class="view section section-alt" id="stats">
       <div class="wrap">
         <div class="section-head">
           <span class="section-label">STATS</span>
@@ -661,7 +677,7 @@
     </section>
 
     <!-- ===== 语录 ===== -->
-    <section class="section" id="quotes">
+    <section class="view section" id="quotes">
       <div class="wrap">
         <div class="section-head">
           <span class="section-label">QUOTES</span>
@@ -679,7 +695,7 @@
     </section>
 
     <!-- ===== 图集 ===== -->
-    <section class="section section-alt" id="gallery">
+    <section class="view section section-alt" id="gallery">
       <div class="wrap">
         <div class="section-head">
           <span class="section-label">GALLERY</span>
@@ -702,7 +718,7 @@
     </section>
 
     <!-- ===== 留言板 ===== -->
-    <section class="section" id="message">
+    <section class="view section" id="message">
       <div class="wrap">
         <div class="section-head">
           <span class="section-label">MESSAGE</span>
@@ -744,6 +760,8 @@
       <a class="vm-link" href="assets/highlight-gongsunli.mp4" target="_blank" rel="noopener">打开视频文件 ↗</a>
     </div>
   </div>
+
+  <button class="back-hub" id="backHub" data-target="home">← 返回目录</button>
 
   <script src="js/main.js"></script>
 </body>
