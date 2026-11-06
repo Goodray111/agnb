@@ -10,6 +10,7 @@
   --red-soft: rgba(216, 30, 44, 0.12);
   --gold: #e9b949;
   --gold-soft: rgba(233, 185, 73, 0.14);
+  --leaf: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23d81e2c' d='M12 2L13.8 7.6L19 5L16.3 10L22 11.5L17 14.5L20 19.5L14.5 18.5L13 24L11 24L9.5 18.5L4 19.5L7 14.5L2 11.5L7.7 10L5 5L10.2 7.6Z'/%3E%3C/svg%3E");
 
   --bg: #0f1013;
   --bg-2: #16171c;
@@ -2611,6 +2612,70 @@ body::after {
 [data-theme="light"] .hub-arrow { color: var(--text-2); }
 [data-theme="light"] .hub-card:hover {
   box-shadow: 0 16px 36px rgba(15, 16, 19, 0.12), 0 0 0 1px rgba(216, 30, 44, 0.35);
+}
+
+/* ---------- 公孙离元素 & 科技感 ---------- */
+/* 章节标签前的小枫叶（全站） */
+.section-label::before {
+  content: "";
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  margin-right: 7px;
+  background: var(--leaf) center / contain no-repeat;
+  vertical-align: -1px;
+}
+
+/* 首屏飘落枫叶 */
+.leaf-fall {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: var(--leaf) center / contain no-repeat;
+  opacity: 0.22;
+  animation: leafFall linear infinite;
+  pointer-events: none;
+}
+.lf1 { left: 8%; animation-duration: 15s; animation-delay: 0s; }
+.lf2 { left: 26%; animation-duration: 19s; animation-delay: 3s; }
+.lf3 { left: 44%; animation-duration: 17s; animation-delay: 6s; }
+.lf4 { left: 62%; animation-duration: 21s; animation-delay: 1.5s; }
+.lf5 { left: 78%; animation-duration: 16s; animation-delay: 5s; }
+.lf6 { left: 92%; animation-duration: 20s; animation-delay: 8s; }
+@keyframes leafFall {
+  0% { transform: translateY(-10vh) rotate(0deg); }
+  100% { transform: translateY(115vh) rotate(400deg); }
+}
+
+/* 科技网格（交替章节背景） */
+.section-alt {
+  background-image:
+    linear-gradient(rgba(216, 30, 44, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(216, 30, 44, 0.03) 1px, transparent 1px);
+  background-size: 46px 46px;
+}
+
+/* 图集悬浮扫光 */
+.g-tile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 42%, rgba(255, 255, 255, 0.35) 50%, transparent 58%);
+  transform: translateX(-110%);
+  transition: transform 0.65s ease;
+  pointer-events: none;
+}
+.g-tile:hover::after { transform: translateX(110%); }
+
+/* 章节标题上方能量线 */
+.section-head::before {
+  content: "";
+  display: block;
+  width: 56px;
+  height: 2px;
+  margin: 0 auto 16px;
+  background: linear-gradient(90deg, transparent, var(--red), transparent);
+  box-shadow: 0 0 10px rgba(216, 30, 44, 0.5);
 }
 
 /* 减少动态偏好 */
