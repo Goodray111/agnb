@@ -861,6 +861,48 @@
     svg.innerHTML = html;
   })();
 
+  /* ---------- 各章节滚动字幕 ---------- */
+  (function () {
+    var data = {
+      about: ["徐必成", "2001.12.26", "江西抚州南丰", "发育路", "成都AG超玩会", "公孙离 · 云诺千山"],
+      story: ["警校少年", "BA 黑凤梨", "老头射手", "一诺千金", "从替补到 FMVP"],
+      timeline: ["2018 首秀", "2019 首冠", "2023 FMVP", "2024 双冠", "2025 三冠", "2026 亚运"],
+      highlights: ["公孙离关键一推", "孙尚香五杀", "世冠 FMVP", "年总 FMVP", "云诺千山"],
+      stats: ["七冠六亚", "1104 局", "671 胜", "185 次 MVP", "1000 击杀", "2000 击杀", "4000 助攻"],
+      schedule: ["KPL 2026", "挑战者杯", "电竞世界杯", "亚运会", "最近比赛"],
+      quotes: ["一诺千金", "老头射手", "最强的是自己", "以热爱为名"],
+      play: ["知识问答", "猜英雄", "荣誉配对", "今日一诺"],
+      gallery: ["捧杯瞬间", "初登赛场", "总决赛海报", "MVP 肖像"],
+      watch: ["KPL 2026", "官方直播间 55", "比赛回放", "电竞世界杯"],
+      message: ["写下一句应援", "留下你的名字", "以热爱为名"],
+      end: ["感谢阅读", "VOL.01 · 2026", "少年一诺 矢志不渝"]
+    };
+
+    Object.keys(data).forEach(function (id) {
+      var sec = document.getElementById(id);
+      if (!sec) return;
+      var head = sec.querySelector(".section-head");
+      if (!head) return;
+      if (sec.querySelector(".ticker-inline")) return;
+
+      var wrapEl = document.createElement("div");
+      wrapEl.className = "ticker ticker-inline";
+      wrapEl.setAttribute("aria-hidden", "true");
+
+      var track = document.createElement("div");
+      track.className = "ticker-track";
+      var items = data[id].concat(data[id]);
+      items.forEach(function (txt) {
+        var s = document.createElement("span");
+        s.textContent = txt;
+        track.appendChild(s);
+      });
+
+      wrapEl.appendChild(track);
+      head.insertAdjacentElement("afterend", wrapEl);
+    });
+  })();
+
   /* ---------- 年份 ---------- */
   var yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();

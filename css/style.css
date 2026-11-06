@@ -2520,6 +2520,21 @@ body::after {
   font-weight: 800;
 }
 
+/* 各章节内嵌滚动字幕 */
+.ticker-inline {
+  margin: 18px 0 30px;
+  border-radius: 8px;
+}
+.ticker-inline .ticker-track {
+  animation-duration: 22s;
+  gap: 36px;
+  padding: 8px 0;
+}
+.ticker-inline .ticker-track span {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+}
+
 /* 导航下划线 */
 .nav-links a {
   position: relative;
