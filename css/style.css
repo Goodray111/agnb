@@ -31,12 +31,12 @@
 
 /* 浅色模式 */
 html[data-theme="light"] {
-  --bg: #f6f6f8;
+  --bg: #ffffff;
   --bg-2: #ffffff;
   --card: #ffffff;
-  --line: #e6e7ec;
-  --text: #17181d;
-  --text-2: #5a5c66;
+  --line: #e8e9ee;
+  --text: #15161a;
+  --text-2: #4b4d57;
   --shadow: 0 18px 40px rgba(23, 24, 29, 0.08);
   --shadow-sm: 0 8px 20px rgba(23, 24, 29, 0.06);
   --red-soft: rgba(216, 30, 44, 0.09);
@@ -2571,32 +2571,47 @@ body::after {
   to { transform: scale(26); opacity: 0; }
 }
 
-/* ---------- 浅色主题可读性修正 ---------- */
-/* Hero 与图卡本身是深色底，文字统一用浅色 */
+/* ---------- 白色主题可读性修正 ---------- */
+[data-theme="light"] .hero-bg {
+  background:
+    radial-gradient(900px 520px at 50% -8%, rgba(216, 30, 44, 0.10), transparent 62%),
+    radial-gradient(700px 420px at 88% 108%, rgba(233, 185, 73, 0.08), transparent 60%),
+    linear-gradient(180deg, #ffffff, #f4f5f8);
+}
+[data-theme="light"] .hero-bg::after {
+  background:
+    radial-gradient(1100px 640px at 50% 34%, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.7) 66%, #ffffff 100%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0.25) 44%, #ffffff 100%);
+}
 [data-theme="light"] .hero-title,
-[data-theme="light"] .hero-kicker,
 [data-theme="light"] .hero-sub,
 [data-theme="light"] .hero-desc,
 [data-theme="light"] .hero-note {
-  color: #f3f3f5;
+  color: var(--text);
 }
+[data-theme="light"] .hero-kicker { color: var(--red); }
 [data-theme="light"] .hero-tags span {
-  color: #f3f3f5;
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.22);
+  color: var(--text-2);
+  background: #ffffff;
+  border-color: var(--line);
 }
+[data-theme="light"] .cover-vol { color: var(--text-2); }
 [data-theme="light"] .hub-card {
-  color: #f3f3f5;
-  background: #1b1c22;
-  border-color: rgba(255, 255, 255, 0.12);
+  color: var(--text);
+  background: #ffffff;
+  border-color: var(--line);
+  box-shadow: 0 6px 18px rgba(15, 16, 19, 0.06);
 }
-[data-theme="light"] .hub-title { color: #ffffff; }
-[data-theme="light"] .hub-desc {
-  color: rgba(255, 255, 255, 0.88);
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+[data-theme="light"] .hub-bg { opacity: 0.09; }
+[data-theme="light"] .hub-card::after {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0.92) 100%);
 }
-[data-theme="light"] .hub-arrow { color: rgba(255, 255, 255, 0.7); }
-[data-theme="light"] .cover-vol { color: rgba(255, 255, 255, 0.6); }
+[data-theme="light"] .hub-title { color: var(--text); }
+[data-theme="light"] .hub-desc { color: var(--text-2); text-shadow: none; }
+[data-theme="light"] .hub-arrow { color: var(--text-2); }
+[data-theme="light"] .hub-card:hover {
+  box-shadow: 0 16px 36px rgba(15, 16, 19, 0.12), 0 0 0 1px rgba(216, 30, 44, 0.35);
+}
 
 /* 减少动态偏好 */
 @media (prefers-reduced-motion: reduce) {

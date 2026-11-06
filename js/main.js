@@ -7,7 +7,7 @@
   /* ---------- 深浅色切换 ---------- */
   var root = document.documentElement;
   var themeBtn = document.getElementById("themeBtn");
-  var THEME_KEY = "yinuo-theme";
+  var THEME_KEY = "yinuo-theme-v2";
 
   function applyTheme(theme) {
     root.setAttribute("data-theme", theme);
@@ -22,7 +22,7 @@
   if (savedTheme === "light" || savedTheme === "dark") {
     applyTheme(savedTheme);
   } else {
-    applyTheme("dark");
+    applyTheme("light");
   }
 
   if (themeBtn) {
