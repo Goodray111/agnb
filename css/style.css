@@ -2390,6 +2390,133 @@ button { font-family: inherit; }
 }
 .replay p { margin: 0; padding: 10px 12px; font-size: 12px; color: var(--text-2); background: var(--card); }
 
+/* ---------- 电竞风动态效果 ---------- */
+/* 全屏扫描线 */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.018) 0px,
+    rgba(255, 255, 255, 0.018) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  opacity: 0.55;
+}
+
+/* 章节标签霓虹呼吸 */
+.section-label {
+  text-shadow: 0 0 10px rgba(255, 74, 90, 0.45);
+  animation: labelPulse 3.6s ease-in-out infinite;
+}
+@keyframes labelPulse {
+  0%, 100% { text-shadow: 0 0 8px rgba(255, 74, 90, 0.3); }
+  50% { text-shadow: 0 0 18px rgba(255, 74, 90, 0.8); }
+}
+
+/* 导航故障效果 */
+.nav-links a:hover {
+  animation: navGlitch 0.32s steps(1) 1;
+}
+@keyframes navGlitch {
+  0%, 100% { text-shadow: none; transform: none; }
+  33% { text-shadow: 1px 0 #00e5ff, -1px 0 #ff2a4d; transform: translateX(1px); }
+  66% { text-shadow: -1px 0 #00e5ff, 1px 0 #ff2a4d; transform: translateX(-1px); }
+}
+
+/* 标题轻微故障 */
+.hero-title {
+  animation: titleGlitch 7s steps(1) infinite;
+}
+@keyframes titleGlitch {
+  0%, 94%, 100% { transform: none; filter: none; }
+  95% { transform: translate(-2px, 1px); filter: hue-rotate(20deg) contrast(1.2); }
+  96% { transform: translate(2px, -1px); filter: hue-rotate(-20deg); }
+  97% { transform: none; filter: none; }
+}
+
+/* HUD 角标 */
+.game-card,
+.sched-card,
+.radar-wrap,
+.endcard {
+  position: relative;
+}
+.game-card::before,
+.game-card::after,
+.sched-card::before,
+.sched-card::after,
+.radar-wrap::before,
+.radar-wrap::after,
+.endcard::before,
+.endcard::after {
+  content: "";
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 1px solid rgba(255, 74, 90, 0.55);
+  pointer-events: none;
+}
+.game-card::before,
+.sched-card::before,
+.radar-wrap::before,
+.endcard::before {
+  left: -1px;
+  top: -1px;
+  border-right: 0;
+  border-bottom: 0;
+}
+.game-card::after,
+.sched-card::after,
+.radar-wrap::after,
+.endcard::after {
+  right: -1px;
+  bottom: -1px;
+  border-left: 0;
+  border-top: 0;
+}
+
+/* 霓虹按钮/卡片辉光 */
+.endcard-btn:hover {
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.25), 0 0 26px rgba(255, 74, 90, 0.55);
+}
+.platform:hover {
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45), 0 0 22px rgba(255, 74, 90, 0.18);
+}
+
+/* 滚动字幕 */
+.ticker {
+  overflow: hidden;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: rgba(255, 74, 90, 0.04);
+}
+.ticker-track {
+  display: flex;
+  gap: 44px;
+  width: max-content;
+  padding: 9px 0;
+  white-space: nowrap;
+  animation: tickerMove 30s linear infinite;
+}
+@keyframes tickerMove {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.ticker-track span {
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  color: var(--text-2);
+}
+.ticker-track b {
+  color: var(--red);
+  font-weight: 800;
+}
+
 /* 导航下划线 */
 .nav-links a {
   position: relative;
