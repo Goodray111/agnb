@@ -1,9 +1,9 @@
 /* =========================================================
-   一诺 · 粉丝专题站  ——  样式表
-   主色：AG 红 + 深灰 + 白，点缀金色高光
+   Yinuo Fan Site — stylesheet
+   Primary: AG red + dark gray + white, with gold accents
    ========================================================= */
 
-/* ---------- 设计变量 ---------- */
+/* ---------- Design variables ---------- */
 :root {
   --red: #d81e2c;
   --red-hover: #ff3b4e;
@@ -30,7 +30,7 @@
     "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
 }
 
-/* 浅色模式 */
+/* Light mode */
 html[data-theme="light"] {
   --bg: #ffffff;
   --bg-2: #ffffff;
@@ -44,7 +44,7 @@ html[data-theme="light"] {
   --gold-soft: rgba(233, 185, 73, 0.16);
 }
 
-/* ---------- 基础 ---------- */
+/* ---------- Base ---------- */
 * { box-sizing: border-box; }
 
 html {
@@ -85,11 +85,11 @@ button { font-family: inherit; }
   margin-inline: auto;
 }
 
-/* ---------- 站内视图切换 ---------- */
+/* ---------- In-page view switching ---------- */
 .view { display: none; }
 .view.is-active { display: block; }
 
-/* ---------- 目录 ---------- */
+/* ---------- Directory ---------- */
 .hub {
   padding: 10px 24px 90px;
 }
@@ -199,7 +199,7 @@ button { font-family: inherit; }
 .back-hub.show { display: block; }
 .back-hub:hover { border-color: var(--red); color: var(--red); }
 
-/* ---------- 导航 ---------- */
+/* ---------- Navigation ---------- */
 .nav {
   position: fixed;
   inset: 0 0 auto 0;
@@ -316,7 +316,7 @@ button { font-family: inherit; }
   transition: transform 0.25s, opacity 0.25s;
 }
 
-/* ---------- 首页 Banner ---------- */
+/* ---------- Home banner ---------- */
 .hero {
   position: relative;
   min-height: 58svh;
@@ -497,7 +497,7 @@ button { font-family: inherit; }
   opacity: 0.7;
 }
 
-/* ---------- 通用 Section ---------- */
+/* ---------- Common section ---------- */
 .section {
   padding: 96px 0;
   scroll-margin-top: var(--nav-h);
@@ -537,7 +537,7 @@ button { font-family: inherit; }
 }
 .sample-note::before { content: "※ "; color: var(--gold); }
 
-/* ---------- 成长故事 ---------- */
+/* ---------- Growth story ---------- */
 .story {
   max-width: 840px;
   margin: 0 auto;
@@ -565,7 +565,7 @@ button { font-family: inherit; }
   color: var(--text);
 }
 
-/* ---------- 关于 ---------- */
+/* ---------- About ---------- */
 .about-grid {
   display: grid;
   grid-template-columns: minmax(0, 0.52fr) minmax(0, 1.48fr);
@@ -689,7 +689,7 @@ button { font-family: inherit; }
   font-weight: 600;
 }
 
-/* ---------- 时间线 ---------- */
+/* ---------- Timeline ---------- */
 .timeline {
   position: relative;
   padding-left: 34px;
@@ -746,7 +746,7 @@ button { font-family: inherit; }
 .tl-card h4 { margin: 0 0 6px; font-size: 17px; font-weight: 800; }
 .tl-card p { margin: 0; color: var(--text-2); font-size: 14px; }
 
-/* 带照片的时间线卡片 */
+/* Timeline cards with photos */
 .tl-card-photo {
   display: grid;
   grid-template-columns: 96px 1fr;
@@ -771,7 +771,7 @@ button { font-family: inherit; }
 }
 .tl-card-photo:hover .tl-photo img { transform: scale(1.05); }
 
-/* 赛场历程（点击式） */
+/* Career timeline (clickable) */
 .tl-tabs {
   display: flex;
   flex-wrap: wrap;
@@ -886,7 +886,7 @@ button { font-family: inherit; }
   display: block;
 }
 
-/* 赛场历程（手风琴） */
+/* Career timeline (accordion) */
 .tl-accordion {
   max-width: 820px;
   margin: 0 auto;
@@ -977,7 +977,7 @@ button { font-family: inherit; }
 }
 .tl-acc-facts b { color: var(--red); font-weight: 800; }
 
-/* ---------- 高光卡片 ---------- */
+/* ---------- Highlight cards ---------- */
 .cards-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -1022,7 +1022,7 @@ button { font-family: inherit; }
   backdrop-filter: blur(4px);
 }
 .h-media::after {
-  content: "一诺";
+  content: "YINUO";
   position: absolute;
   right: 14px;
   bottom: 2px;
@@ -1031,7 +1031,7 @@ button { font-family: inherit; }
   color: rgba(255, 255, 255, 0.1);
 }
 
-/* 视频卡片 */
+/* Video cards */
 .h-media-video { height: 140px; }
 .h-media-video::after { content: none; }
 .h-cover {
@@ -1079,7 +1079,7 @@ button { font-family: inherit; }
   backdrop-filter: blur(4px);
 }
 
-/* 视频弹层 */
+/* Video modal */
 .video-modal {
   position: fixed;
   inset: 0;
@@ -1144,13 +1144,13 @@ button { font-family: inherit; }
 .h-body h4 { margin: 0 0 8px; font-size: 18px; font-weight: 800; }
 .h-body p { margin: 0; color: var(--text-2); font-size: 14px; }
 
-/* 占位渐变 */
+/* Placeholder gradient */
 .grad-1 { background: linear-gradient(135deg, #3a0d13, #8f1a26 55%, #d81e2c); }
 .grad-2 { background: linear-gradient(135deg, #1d1f2a, #4a2f10 60%, #e9b949); }
 .grad-3 { background: linear-gradient(135deg, #101216, #4a1018 55%, #ff3b4e); }
 .grad-4 { background: linear-gradient(135deg, #14161c, #3d2a0e 55%, #e9b949); }
 
-/* ---------- 数据 ---------- */
+/* ---------- Stats ---------- */
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -1356,7 +1356,7 @@ button { font-family: inherit; }
 }
 .hero-facts b { color: var(--text); }
 
-/* ---------- 图集 ---------- */
+/* ---------- Gallery ---------- */
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -1404,7 +1404,7 @@ button { font-family: inherit; }
 .g-tile:hover { transform: scale(1.015); }
 .g-tile { transition: transform 0.25s; }
 
-/* ---------- 语录 ---------- */
+/* ---------- Quotes ---------- */
 .quotes-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -1444,7 +1444,7 @@ button { font-family: inherit; }
   letter-spacing: 0.06em;
 }
 
-/* ---------- 留言板 ---------- */
+/* ---------- Message board ---------- */
 .message-wrap {
   display: grid;
   grid-template-columns: 320px 1fr;
@@ -1520,7 +1520,7 @@ button { font-family: inherit; }
   to { opacity: 1; transform: none; }
 }
 
-/* ---------- 页脚 ---------- */
+/* ---------- Footer ---------- */
 .footer {
   border-top: 1px solid var(--line);
   background: var(--bg-2);
@@ -1537,7 +1537,7 @@ button { font-family: inherit; }
 .footer-desc { margin: 10px 0 0; color: var(--text-2); font-size: 14px; }
 .footer-copy { margin: 14px 0 0; color: var(--text-2); font-size: 12px; opacity: 0.75; }
 
-/* ---------- 大图预览 ---------- */
+/* ---------- Full-size preview ---------- */
 .lightbox {
   position: fixed;
   inset: 0;
@@ -1587,7 +1587,7 @@ button { font-family: inherit; }
 .lb-inner h3 { margin: 16px 0 6px; font-size: 18px; }
 .lb-inner p { margin: 0; color: var(--text-2); font-size: 14px; }
 
-/* ---------- 回到顶部 ---------- */
+/* ---------- Back to top ---------- */
 .back-top {
   position: fixed;
   right: 24px;
@@ -1610,7 +1610,7 @@ button { font-family: inherit; }
 .back-top.show { opacity: 1; visibility: visible; transform: none; }
 .back-top:hover { border-color: var(--red); color: var(--red); }
 
-/* ---------- 滚动出现动画 ---------- */
+/* ---------- Scroll reveal animation ---------- */
 .reveal {
   opacity: 0;
   transform: translateY(18px);
@@ -1618,7 +1618,7 @@ button { font-family: inherit; }
 }
 .reveal.in { opacity: 1; transform: none; }
 
-/* ---------- 响应式 ---------- */
+/* ---------- Responsive ---------- */
 @media (max-width: 980px) {
   .about-grid { grid-template-columns: 1fr; }
   .about-photo img { aspect-ratio: 16 / 10; }
@@ -1683,7 +1683,7 @@ button { font-family: inherit; }
   .hero-tags span { font-size: 11px; }
 }
 
-/* ---------- 互动玩法 ---------- */
+/* ---------- Play ---------- */
 .play-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1741,7 +1741,7 @@ button { font-family: inherit; }
 }
 .game-foot button:hover { border-color: var(--red); color: var(--red); }
 
-/* ---------- 新增玩法：配对 / 抽签 ---------- */
+/* ---------- New games: matching / draw ---------- */
 .match-cols { display: grid; grid-template-columns: 1.5fr 1fr; gap: 10px; }
 .match-col { display: flex; flex-direction: column; gap: 8px; }
 .match-item {
@@ -1790,7 +1790,7 @@ button { font-family: inherit; }
 .fact { display: flex; gap: 10px; font-size: 12px; line-height: 1.6; color: var(--text-2); }
 .fact b { color: var(--red); font-weight: 800; }
 
-/* ---------- 动态效果 ---------- */
+/* ---------- Dynamic effects ---------- */
 .scroll-progress {
   position: fixed;
   top: 0;
@@ -1812,7 +1812,7 @@ button { font-family: inherit; }
 }
 @keyframes heroShimmer { to { background-position: 200% center; } }
 
-/* 光晕球 */
+/* Glow orbs */
 .orb {
   position: absolute;
   border-radius: 50%;
@@ -1855,7 +1855,7 @@ button { font-family: inherit; }
   to { opacity: 1; transform: none; }
 }
 
-/* ---------- 卡通动态元素 ---------- */
+/* ---------- Cartoon animated elements ---------- */
 .hero-toys {
   position: absolute;
   inset: 0;
@@ -1966,7 +1966,7 @@ button { font-family: inherit; }
   50% { transform: translateY(-3px); }
 }
 
-/* 章节卡通装饰 */
+/* Section cartoon decorations */
 .section { position: relative; }
 .sec-deco {
   position: absolute;
@@ -2003,7 +2003,7 @@ button { font-family: inherit; }
 .footer-toys span:nth-child(4) { animation-delay: 1.5s; }
 .footer-toys span:nth-child(5) { animation-delay: 2s; }
 
-/* ---------- 专辑化 ---------- */
+/* ---------- Album styling ---------- */
 .cover-frame {
   position: absolute;
   inset: 78px 18px 18px;
@@ -2059,7 +2059,7 @@ button { font-family: inherit; }
   opacity: 0.7;
 }
 
-/* ---------- 图片灯箱 ---------- */
+/* ---------- Image lightbox ---------- */
 .lightbox {
   position: fixed;
   inset: 0;
@@ -2117,7 +2117,7 @@ button { font-family: inherit; }
   color: rgba(255, 255, 255, 0.7);
 }
 
-/* ---------- 封底 ---------- */
+/* ---------- Back cover ---------- */
 .endcard {
   max-width: 640px;
   margin: 0 auto;
@@ -2164,7 +2164,7 @@ button { font-family: inherit; }
   cursor: pointer;
 }
 
-/* ---------- 专辑衬线细节 ---------- */
+/* ---------- Album serif details ---------- */
 .section-label,
 .cover-vol,
 .chapter-page,
@@ -2173,7 +2173,7 @@ button { font-family: inherit; }
   font-family: Georgia, "Times New Roman", serif;
 }
 
-/* ---------- 六边形对比 ---------- */
+/* ---------- Hexagon comparison ---------- */
 .radar-wrap {
   max-width: 980px;
   margin: 34px auto 0;
@@ -2197,7 +2197,7 @@ button { font-family: inherit; }
 .radar-legend li { display: flex; align-items: center; gap: 8px; color: var(--text-2); }
 .radar-legend i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
 
-/* ---------- 赛程 ---------- */
+/* ---------- Schedule ---------- */
 .sched-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -2244,7 +2244,7 @@ button { font-family: inherit; }
 .recent-score.win { border-color: var(--red); color: var(--red); }
 .sched-tag.done { opacity: 0.85; }
 
-/* ---------- 观赛（电竞风） ---------- */
+/* ---------- Watch (esports style) ---------- */
 #watch {
   background-image:
     linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
@@ -2393,8 +2393,8 @@ button { font-family: inherit; }
 }
 .replay p { margin: 0; padding: 10px 12px; font-size: 12px; color: var(--text-2); background: var(--card); }
 
-/* ---------- 电竞风动态效果 ---------- */
-/* 全屏扫描线 */
+/* ---------- Esports-style dynamic effects ---------- */
+/* Full-screen scanline */
 body::after {
   content: "";
   position: fixed;
@@ -2411,7 +2411,7 @@ body::after {
   opacity: 0.25;
 }
 
-/* 章节标签霓虹呼吸 */
+/* Section label neon breathing */
 .section-label {
   text-shadow: 0 0 10px rgba(255, 74, 90, 0.45);
   animation: labelPulse 3.6s ease-in-out infinite;
@@ -2421,7 +2421,7 @@ body::after {
   50% { text-shadow: 0 0 18px rgba(255, 74, 90, 0.8); }
 }
 
-/* 导航故障效果 */
+/* Nav glitch effect */
 .nav-links a:hover {
   animation: navGlitch 0.32s steps(1) 1;
 }
@@ -2431,7 +2431,7 @@ body::after {
   66% { text-shadow: -1px 0 #00e5ff, 1px 0 #ff2a4d; transform: translateX(-1px); }
 }
 
-/* 标题轻微故障 */
+/* Title subtle glitch */
 .hero-title {
   animation: titleGlitch 7s steps(1) infinite;
 }
@@ -2442,7 +2442,7 @@ body::after {
   97% { transform: none; filter: none; }
 }
 
-/* HUD 角标 */
+/* HUD corner brackets */
 .game-card,
 .sched-card,
 .radar-wrap,
@@ -2483,7 +2483,7 @@ body::after {
   border-top: 0;
 }
 
-/* 霓虹按钮/卡片辉光 */
+/* Neon button/card glow */
 .endcard-btn:hover {
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.25), 0 0 26px rgba(255, 74, 90, 0.55);
 }
@@ -2491,7 +2491,7 @@ body::after {
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45), 0 0 22px rgba(255, 74, 90, 0.18);
 }
 
-/* 滚动字幕 */
+/* Scrolling ticker */
 .ticker {
   overflow: hidden;
   border-top: 1px solid var(--line);
@@ -2520,7 +2520,7 @@ body::after {
   font-weight: 800;
 }
 
-/* 各章节内嵌滚动字幕 */
+/* Per-section inline ticker */
 .ticker-inline {
   margin: 18px 0 30px;
   border-radius: 8px;
@@ -2535,7 +2535,7 @@ body::after {
   letter-spacing: 0.18em;
 }
 
-/* 导航下划线 */
+/* Nav underline */
 .nav-links a {
   position: relative;
 }
@@ -2555,16 +2555,16 @@ body::after {
 .nav-links a:hover::after,
 .nav-links a.active::after { transform: scaleX(1); }
 
-/* 主题按钮旋转 */
+/* Theme button rotation */
 .theme-btn { transition: transform 0.4s ease, border-color 0.2s, color 0.2s; }
 .theme-btn:hover { transform: rotate(18deg); }
 
-/* 卡片光晕 */
+/* Card glow */
 .hub-card:hover {
   box-shadow: 0 18px 42px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(255, 74, 90, 0.35);
 }
 
-/* 点击波纹 */
+/* Click ripple */
 .game-opt,
 .hero-cta,
 .game-foot button,
@@ -2587,7 +2587,7 @@ body::after {
   to { transform: scale(26); opacity: 0; }
 }
 
-/* ---------- 白色主题可读性修正 ---------- */
+/* ---------- Light theme readability fixes ---------- */
 [data-theme="light"] .hero-bg {
   background:
     radial-gradient(900px 520px at 50% -8%, rgba(216, 30, 44, 0.10), transparent 62%),
@@ -2629,8 +2629,8 @@ body::after {
   box-shadow: 0 16px 36px rgba(15, 16, 19, 0.12), 0 0 0 1px rgba(216, 30, 44, 0.35);
 }
 
-/* ---------- 公孙离元素 & 科技感 ---------- */
-/* 章节标签前的小枫叶（全站） */
+/* ---------- Gongsun Li elements & tech feel ---------- */
+/* Small maple leaf before section labels (site-wide) */
 .section-label::before {
   content: "";
   display: inline-block;
@@ -2641,7 +2641,7 @@ body::after {
   vertical-align: -1px;
 }
 
-/* 首屏飘落枫叶 */
+/* Falling maple leaves on the hero */
 .leaf-fall {
   position: absolute;
   width: 16px;
@@ -2662,7 +2662,7 @@ body::after {
   100% { transform: translateY(115vh) rotate(400deg); }
 }
 
-/* 科技网格（交替章节背景） */
+/* Tech grid (alternating section background) */
 .section-alt {
   background-image:
     linear-gradient(rgba(216, 30, 44, 0.03) 1px, transparent 1px),
@@ -2670,7 +2670,7 @@ body::after {
   background-size: 46px 46px;
 }
 
-/* 图集悬浮扫光 */
+/* Gallery hover sweep */
 .g-tile::after {
   content: "";
   position: absolute;
@@ -2682,7 +2682,7 @@ body::after {
 }
 .g-tile:hover::after { transform: translateX(110%); }
 
-/* 章节标题上方能量线 */
+/* Energy line above section titles */
 .section-head::before {
   content: "";
   display: block;
@@ -2693,7 +2693,7 @@ body::after {
   box-shadow: 0 0 10px rgba(216, 30, 44, 0.5);
 }
 
-/* 减少动态偏好 */
+/* Reduced motion preference */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *,

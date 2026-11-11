@@ -1,58 +1,56 @@
-# 一诺 · 粉丝专题站（v1 · 真实资料版）
+# Yinuo Fan Site
 
-成都AG超玩会一诺（徐必成）粉丝向专题站。纯静态网页，无需服务器，直接用浏览器打开即可。
+A fan site for Yinuo (Xu Bicheng), marksman for Chengdu AG Super Play. A pure static single-page website — no server required, just open in a browser.
 
-## 目录结构
+## Structure
 
 ```
 my-website/
-├─ index.html          单页入口（7 个板块 + 导航 + 页脚）
+├─ index.html          Single-page entry (12 chapters + navigation + footer)
 ├─ css/
-│  └─ style.css        全部样式（主题变量 / 组件 / 响应式）
+│  └─ style.css        All styles (theme variables / components / responsive)
 ├─ js/
-│  └─ main.js          交互（深色切换 / 移动菜单 / 视频弹层 / 留言本地存储）
-├─ assets/             图片与视频
-│  ├─ about-yinuo.jpg              捧杯瞬间
-│  ├─ hero-agnb.jpg                2024 KPL 年度总决赛海报
-│  ├─ timeline-debut.jpg           初登赛场背影
-│  ├─ highlight-gongsunli.mp4      公孙离名场面视频
-│  ├─ highlight-gongsunli-poster.jpg
-│  └─ README.md
+│  └─ main.js          Interactions (theme toggle / view switching / games / gallery / message board)
+├─ assets/             Images and videos
+└─ README.md
 ```
 
-## 导航方式
+## Navigation
 
-首页是「目录页」：Hero 下方 8 张入口卡片（关于 / 故事 / 历程 / 高光 / 数据 / 图集 / 语录 / 留言），点击进入对应章节；章节内左下角有「← 返回目录」，顶部导航栏也可直接切换。切换带 hash 记录（如 `#stats`），便于分享直达。
+The home page is a directory: below the hero are 12 entry cards (About / Story / Timeline / Highlights / Stats / Schedule / Quotes / Play / Gallery / Message / Watch / Back Cover). Click a card to jump to that chapter. The top navigation bar also switches directly, with hash routing (e.g. `#stats`) for sharing.
 
-## 内容板块
+## Chapters
 
-1. **关于一诺**：本名 / 生日 / 籍贯 / 战队 / 位置 / 招牌英雄 + 简介
-2. **成长故事**：从警校少年到「老头射手」的六段长文（早年 / 初入江湖 / 少年首冠 / 漫长低谷 / 王者归来 / 国家队与现在）
-3. **赛场历程**：点击式年份时间线（2017–2026，10 个详情面板）
-4. **高光集锦**：公孙离关键一推（视频）、孙尚香五连绝世、世冠 FMVP、年总 FMVP、公孙离三杀、敖隐 9 战全胜
-5. **赛事数据**：7 冠 6 亚、里程碑、逐赛季数据表、荣誉墙、招牌英雄（点击查看详情）
-6. **图集**：捧杯、初登赛场、总决赛海报、名场面（点击看大图）
-7. **语录**：《人物》专访原话
-8. **留言板**：本地 localStorage 演示
+1. **About Yinuo** — name / birthday / hometown / team / role / signature heroes + intro
+2. **Growth Story** — from a police-academy boy to the "old man marksman"
+3. **Career Timeline** — a clickable year timeline (2017–2026)
+4. **Highlights** — iconic plays, pentakills, FMVP moments
+5. **Career Stats** — 7 titles / 6 runner-up, milestones, season-by-season data, hexagon chart
+6. **Schedule** — 2026 calendar + recent matches
+7. **Quotes** — words from The People interview
+8. **Play** — quiz, guess-the-hero, matching, trivia
+9. **Gallery** — trophies, debut, finals posters (click to enlarge)
+10. **Message Board** — local demo
+11. **Watch** — official live streaming + replays
+12. **Back Cover**
 
-## 资料来源
+## Sources
 
-- 百度百科「徐必成」：https://baike.baidu.com/item/徐必成/4382680
-- 直播吧《一诺职业生涯成绩改写为七冠六亚》：http://news.zhibo8.com/game/2026-05-23/6a11b57857765native.htm
-- 虎扑《人物》专访一诺：https://bbs.hupu.com/642918566.html
-- 腾讯王者荣耀官网 · KPL 名场面
-- 萌娘共享「AG一诺」分类（CC BY-NC-SA 4.0）：https://commons.moegirl.org.cn/Category:AG一诺
+- Baidu Baike — "Xu Bicheng"
+- Zhibo8
+- Hupu — The People interview
+- Tencent Honor of Kings / KPL
+- Moegirl Commons (CC BY-NC-SA 4.0)
 
-> 以上资料用于非商业粉丝展示；如有不妥，请联系删除。
+> Used for non-commercial fan display. Contact to remove if needed.
 
-## 设计说明
+## Design
 
-- 主色：AG 红 `#d81e2c` + 深灰 `#0f1013` + 白，金色 `#e9b949` 点缀
-- 顶部固定导航；首页 Banner；卡片式布局；竖向时间线；图集大图
-- 深色 / 浅色双模式（右上角按钮切换，记忆在 localStorage）
-- 移动端自适应
+- Primary: AG red `#d81e2c` + dark gray + white, gold accents
+- Fixed top navigation, home banner, card layout, vertical timeline, gallery lightbox
+- Dark / light theme (toggle button, saved in localStorage)
+- Responsive for mobile
 
-## SEO
+## Deployed
 
-`index.html` 已内置 title / description / keywords / OG / JSON-LD（Person），
-核心关键词：成都AG超玩会一诺、一诺徐必成、一诺高光名场面、一诺职业历程、AG一诺赛事数据、王者荣耀一诺。
+- GitHub Pages: https://goodray111.github.io/agnb/

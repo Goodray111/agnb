@@ -1,10 +1,10 @@
 /* =========================================================
-   一诺 · 粉丝专题站  ——  交互脚本
+   Yinuo Fan Site — interaction script
    ========================================================= */
 (function () {
   "use strict";
 
-  /* ---------- 深浅色切换 ---------- */
+  /* ---------- Theme toggle ---------- */
   var root = document.documentElement;
   var themeBtn = document.getElementById("themeBtn");
   var THEME_KEY = "yinuo-theme-v2";
@@ -35,7 +35,7 @@
     });
   }
 
-  /* ---------- 移动端菜单 ---------- */
+  /* ---------- Mobile menu ---------- */
   var menuBtn = document.getElementById("menuBtn");
   var navLinks = document.getElementById("navLinks");
 
@@ -53,7 +53,7 @@
     });
   }
 
-  /* ---------- 站内视图切换（目录 → 各章节） ---------- */
+  /* ---------- In-page view switching (directory -> chapters) ---------- */
   var views = document.querySelectorAll(".view");
   var backHub = document.getElementById("backHub");
   var navAnchors = document.querySelectorAll('.nav-links a[href^="#"]');
@@ -105,7 +105,7 @@
     if (document.getElementById(initialHash)) showView(initialHash);
   }
 
-  /* ---------- 滚动出现动画 ---------- */
+  /* ---------- Scroll reveal animation ---------- */
   if ("IntersectionObserver" in window) {
     var revealSelectors = [
       ".section-head",
@@ -139,9 +139,9 @@
     });
   }
 
-  /* ---------- 图集大图预览（新实现见下方「图集灯箱」） ---------- */
+  /* ---------- Gallery full-size preview(see "Gallery lightbox" below) ---------- */
 
-  /* ---------- 赛场历程（手风琴） ---------- */
+  /* ---------- Career timeline (accordion) ---------- */
   var accItems = document.querySelectorAll(".tl-acc-item");
 
   if (accItems.length) {
@@ -163,7 +163,7 @@
     });
   }
 
-  /* ---------- 招牌英雄（点击切换） ---------- */
+  /* ---------- Signature heroes (click to switch) ---------- */
   var heroChips = document.querySelectorAll(".chip[data-hero]");
   var heroPanels = document.querySelectorAll(".hero-detail-panel");
 
@@ -181,7 +181,7 @@
     });
   }
 
-  /* ---------- 视频弹层 ---------- */
+  /* ---------- Video modal ---------- */
   var videoModal = document.getElementById("videoModal");
   var vmVideo = document.getElementById("vmVideo");
   var vmClose = document.getElementById("vmClose");
@@ -222,7 +222,7 @@
     if (e.key === "Escape") closeVideo();
   });
 
-  /* ---------- 留言板（本地存储） ---------- */
+  /* ---------- Message board (local storage) ---------- */
   var msgForm = document.getElementById("msgForm");
   var msgList = document.getElementById("msgList");
   var MSG_KEY = "yinuo-messages";
@@ -262,7 +262,7 @@
 
     if (!list.length) {
       msgList.innerHTML =
-        '<div class="msg-item"><p style="color:var(--text-2)">还没有留言，来写下第一句应援吧。</p></div>';
+        '<div class="msg-item"><p style="color:var(--text-2)">No messages yet — leave the first word of support.</p></div>';
       return;
     }
 
@@ -305,7 +305,7 @@
 
   renderMessages();
 
-  /* ---------- 回到顶部 ---------- */
+  /* ---------- Back to top ---------- */
   var backTop = document.getElementById("backTop");
 
   function onScroll() {
@@ -321,7 +321,7 @@
     onScroll();
   }
 
-  /* ---------- 互动玩法：知识问答 ---------- */
+  /* ---------- Play: quiz ---------- */
   (function () {
     var body = document.getElementById("quizBody");
     var scoreEl = document.getElementById("quizScore");
@@ -329,21 +329,21 @@
     if (!body) return;
 
     var questions = [
-      { q: "一诺的本名是？", opts: ["徐必成", "徐必达", "许必成", "徐一诺"], a: 0, tip: "徐必成，2001 年 12 月 26 日生于江西抚州南丰。" },
-      { q: "一诺的生日是？", opts: ["2001.12.26", "2002.01.26", "2001.06.12", "2000.12.26"], a: 0, tip: "2001 年 12 月 26 日。" },
-      { q: "一诺的出生地是？", opts: ["江西抚州南丰", "湖南长沙", "四川成都", "浙江杭州"], a: 0, tip: "江西抚州南丰。" },
-      { q: "一诺的 ID「一诺」取自？", opts: ["一诺千金", "一生之诺", "一诺倾心", "一诺无辞"], a: 0, tip: "一诺千金。" },
-      { q: "一诺在 KPL 的首秀日期是？", opts: ["2018.04.21", "2017.04.21", "2018.09.15", "2019.04.21"], a: 0, tip: "2018 年 4 月 21 日，BA 黑凤梨 vs eStarPro。" },
-      { q: "一诺在 KPL 首秀使用的英雄是？", opts: ["花木兰", "关羽", "公孙离", "孙尚香"], a: 0, tip: "花木兰。" },
-      { q: "2019 秋季赛，AG 首冠的对手是？", opts: ["QGhappy", "eStarPro", "北京 WB", "重庆狼队"], a: 0, tip: "2019.12.14，4:1 击败 QGhappy。" },
-      { q: "2019 秋季赛总决赛的比分是？", opts: ["4:1", "4:2", "4:3", "3:4"], a: 0, tip: "4:1。" },
-      { q: "2023 世冠 KIC 总决赛的比分是？", opts: ["4:2", "4:1", "4:3", "3:4"], a: 0, tip: "4:2 击败北京 WB。" },
-      { q: "一诺的 FMVP 定制皮肤英雄是？", opts: ["公孙离", "孙尚香", "马可波罗", "敖隐"], a: 0, tip: "公孙离——「云诺千山」。" },
-      { q: "2020.05.08，一诺用裴擒虎达成了什么？", opts: ["KPL 1000 击杀", "KPL 2000 击杀", "KPL 4000 助攻", "KPL 600 胜"], a: 0, tip: "KPL 1000 击杀。" },
-      { q: "2022.02.20，一诺达成了什么里程碑？", opts: ["KPL 2000 击杀", "KPL 1000 击杀", "KPL 3000 助攻", "KPL 500 胜"], a: 0, tip: "KPL 2000 击杀。" },
-      { q: "2025.03.02，一诺达成了什么里程碑？", opts: ["KPL 4000 助攻", "KPL 2000 击杀", "KPL 600 胜", "KPL 3000 助攻"], a: 0, tip: "KPL 4000 助攻。" },
-      { q: "截至 2026 年，一诺的 KPL 冠军数是？", opts: ["7", "6", "8", "5"], a: 0, tip: "七冠六亚。" },
-      { q: "2023 年杭州亚运会，一诺参加的项目是？", opts: ["王者荣耀（亚运版）", "英雄联盟", "和平精英", "街霸"], a: 0, tip: "王者荣耀（亚运版），中国队夺金。" }
+      { q: "What is Yinuo's real name?", opts: ["Xu Bicheng", "Xu Bida", "Xu Bichen", "Xu Yinuo"], a: 0, tip: "Xu Bicheng, born 26 December 2001 in Nanfeng, Fuzhou, Jiangxi." },
+      { q: "When is Yinuo's birthday?", opts: ["2001.12.26", "2002.01.26", "2001.06.12", "2000.12.26"], a: 0, tip: "26 December 2001." },
+      { q: "Where was Yinuo born?", opts: ["Nanfeng, Fuzhou, Jiangxi", "Changsha, Hunan", "Chengdu, Sichuan", "Hangzhou, Zhejiang"], a: 0, tip: "Nanfeng, Fuzhou, Jiangxi." },
+      { q: "What does the ID \"Yinuo\" come from?", opts: ["yi nuo qian jin (a promise worth a thousand gold)", "a lifelong promise", "one promise, one heart", "one promise, no excuse"], a: 0, tip: "yi nuo qian jin." },
+      { q: "When was Yinuo's KPL debut?", opts: ["2018.04.21", "2017.04.21", "2018.09.15", "2019.04.21"], a: 0, tip: "21 April 2018, BA Heifengli vs eStarPro." },
+      { q: "Which hero did Yinuo use in his KPL debut?", opts: ["Hua Mulan", "Guan Yu", "Gongsun Li", "Sun Shangxiang"], a: 0, tip: "Hua Mulan." },
+      { q: "Who did AG beat for their first title in the 2019 Autumn?", opts: ["QGhappy", "eStarPro", "Beijing WB", "Chongqing Wolves"], a: 0, tip: "2019.12.14, beat QGhappy 4:1." },
+      { q: "What was the score of the 2019 Autumn Grand Final?", opts: ["4:1", "4:2", "4:3", "3:4"], a: 0, tip: "4:1." },
+      { q: "What was the score of the 2023 World Cup KIC Grand Final?", opts: ["4:2", "4:1", "4:3", "3:4"], a: 0, tip: "Beat Beijing WB 4:2." },
+      { q: "Which hero has Yinuo's FMVP custom skin?", opts: ["Gongsun Li", "Sun Shangxiang", "Marco Polo", "Ao Yin"], a: 0, tip: "Gongsun Li — \"Yun Nuo Qian Shan\"." },
+      { q: "What did Yinuo achieve with Pei Qinhu on 2020.05.08?", opts: ["1000 KPL kills", "2000 KPL kills", "4000 KPL assists", "600 KPL wins"], a: 0, tip: "1000 KPL kills." },
+      { q: "What milestone did Yinuo reach on 2022.02.20?", opts: ["2000 KPL kills", "1000 KPL kills", "3000 KPL assists", "500 KPL wins"], a: 0, tip: "2000 KPL kills." },
+      { q: "What milestone did Yinuo reach on 2025.03.02?", opts: ["4000 KPL assists", "2000 KPL kills", "600 KPL wins", "3000 KPL assists"], a: 0, tip: "4000 KPL assists." },
+      { q: "How many KPL titles has Yinuo won as of 2026?", opts: ["7", "6", "8", "5"], a: 0, tip: "Seven titles, six runner-up finishes." },
+      { q: "Which event did Yinuo compete in at the 2023 Hangzhou Asian Games?", opts: ["Honor of Kings (Asian Games edition)", "League of Legends", "Game for Peace", "Street Fighter"], a: 0, tip: "Honor of Kings (Asian Games edition); Team China won gold." }
     ];
 
     var idx = 0, score = 0, locked = false;
@@ -362,8 +362,8 @@
     function renderQuiz() {
       if (idx >= questions.length) {
         var pct = Math.round((score / questions.length) * 100);
-        var title = pct === 100 ? "一诺十级学者" : pct >= 70 ? "资深 i 人" : pct >= 40 ? "路人粉" : "路人";
-        body.innerHTML = '<div class="game-done"><strong>' + score + " / " + questions.length + "</strong><p>" + title + " · 正确率 " + pct + "%</p></div>";
+        var title = pct === 100 ? "Yinuo Expert" : pct >= 70 ? "Big Fan" : pct >= 40 ? "Casual Fan" : "Passer-by";
+        body.innerHTML = '<div class="game-done"><strong>' + score + " / " + questions.length + "</strong><p>" + title + " · Accuracy " + pct + "%</p></div>";
         scoreEl.textContent = score + " / " + questions.length;
         return;
       }
@@ -413,7 +413,7 @@
     renderQuiz();
   })();
 
-  /* ---------- 互动玩法：猜英雄 ---------- */
+  /* ---------- Play: guess the hero ---------- */
   (function () {
     var body = document.getElementById("guessBody");
     var scoreEl = document.getElementById("guessScore");
@@ -421,14 +421,14 @@
     if (!body) return;
 
     var rounds = [
-      { clue: "2020.05.08，他用这个英雄达成 KPL 1000 击杀。", opts: ["裴擒虎", "公孙离", "孙尚香", "百里守约"], a: 0 },
-      { clue: "2023 世冠 FMVP 的定制皮肤给了这个英雄。", opts: ["公孙离", "孙尚香", "马可波罗", "鲁班七号"], a: 0 },
-      { clue: "2024 春季赛，这个英雄出场 9 战全胜。", opts: ["敖隐", "公孙离", "狄仁杰", "虞姬"], a: 0 },
-      { clue: "2019 秋季赛对阵 TS，他用这个英雄拿下五连绝世。", opts: ["孙尚香", "公孙离", "鲁班七号", "马可波罗"], a: 0 },
-      { clue: "2021 败者组决赛第六局，他用这个英雄拿下 MVP。", opts: ["百里守约", "公孙离", "孙尚香", "虞姬"], a: 0 },
-      { clue: "2019 秋季赛败者组半决赛决胜局，他的这个英雄「一推」终结比赛。", opts: ["公孙离", "孙尚香", "马可波罗", "敖隐"], a: 0 },
-      { clue: "2020 春决下半场，他用这个英雄拿下三杀，把比赛拖入巅峰对决。", opts: ["公孙离", "孙尚香", "鲁班七号", "百里守约"], a: 0 },
-      { clue: "2024 年总决赛，这个英雄的第一视角名场面被粉丝反复回看。", opts: ["鲁班七号", "公孙离", "孙尚香", "敖隐"], a: 0 }
+      { clue: "On 2020.05.08 he reached 1000 KPL kills with this hero.", opts: ["Pei Qinhu", "Gongsun Li", "Sun Shangxiang", "Baili Shouyue"], a: 0 },
+      { clue: "The 2023 World Cup FMVP custom skin went to this hero.", opts: ["Gongsun Li", "Sun Shangxiang", "Marco Polo", "Luban No.7"], a: 0 },
+      { clue: "In the 2024 Spring this hero went 9-0.", opts: ["Ao Yin", "Gongsun Li", "Di Renjie", "Yu Ji"], a: 0 },
+      { clue: "Against TS in the 2019 Autumn he got a pentakill with this hero.", opts: ["Sun Shangxiang", "Gongsun Li", "Luban No.7", "Marco Polo"], a: 0 },
+      { clue: "In game six of the 2021 lower-bracket final he took MVP with this hero.", opts: ["Baili Shouyue", "Gongsun Li", "Sun Shangxiang", "Yu Ji"], a: 0 },
+      { clue: "In the deciding game of the 2019 Autumn lower-bracket semifinal, this hero's \"push\" ended the match.", opts: ["Gongsun Li", "Sun Shangxiang", "Marco Polo", "Ao Yin"], a: 0 },
+      { clue: "In the second half of the 2020 Spring final he got a triple kill with this hero to force a peak matchup.", opts: ["Gongsun Li", "Sun Shangxiang", "Luban No.7", "Baili Shouyue"], a: 0 },
+      { clue: "In the 2024 Annual Finals, this hero's first-person highlight was replayed again and again by fans.", opts: ["Luban No.7", "Gongsun Li", "Sun Shangxiang", "Ao Yin"], a: 0 }
     ];
 
     var idx = 0, score = 0, locked = false;
@@ -446,7 +446,7 @@
 
     function renderGuess() {
       if (idx >= rounds.length) {
-        body.innerHTML = '<div class="game-done"><strong>' + score + " / " + rounds.length + "</strong><p>猜英雄完成</p></div>";
+        body.innerHTML = '<div class="game-done"><strong>' + score + " / " + rounds.length + "</strong><p>Guess the Hero complete</p></div>";
         scoreEl.textContent = score + " / " + rounds.length;
         return;
       }
@@ -493,7 +493,7 @@
     renderGuess();
   })();
 
-  /* ---------- 互动玩法：荣誉配对 ---------- */
+  /* ---------- Play: honor matching ---------- */
   (function () {
     var body = document.getElementById("matchBody");
     var scoreEl = document.getElementById("matchScore");
@@ -501,13 +501,13 @@
     if (!body) return;
 
     var pairs = [
-      { event: "KPL 首秀", year: "2018" },
-      { event: "首夺 KPL 冠军", year: "2019" },
-      { event: "达成 2000 击杀", year: "2022" },
-      { event: "首夺 FMVP", year: "2023" },
-      { event: "夏冠 + 年总双冠", year: "2024" },
-      { event: "捧起第七冠", year: "2025" },
-      { event: "爱知·名古屋亚运会", year: "2026" }
+      { event: "KPL debut", year: "2018" },
+      { event: "First KPL title", year: "2019" },
+      { event: "Reached 2000 kills", year: "2022" },
+      { event: "First FMVP", year: "2023" },
+      { event: "Summer + Annual Finals double", year: "2024" },
+      { event: "Lifted the 7th title", year: "2025" },
+      { event: "Aichi-Nagoya Asian Games", year: "2026" }
     ];
     var left = [], right = [], selLeft = null, matched = 0, locked = false;
 
@@ -568,7 +568,7 @@
         matched++;
         scoreEl.textContent = matched + " / " + pairs.length;
         locked = false;
-        if (matched === pairs.length) scoreEl.textContent = "全对！";
+        if (matched === pairs.length) scoreEl.textContent = "All correct!";
       } else {
         lBtn.classList.add("wrong");
         btn.classList.add("wrong");
@@ -594,20 +594,20 @@
     reset();
   })();
 
-  /* ---------- 互动玩法：今日一诺 ---------- */
+  /* ---------- Play: today's Yinuo ---------- */
   (function () {
     var body = document.getElementById("quoteBody");
     var draw = document.getElementById("quoteDraw");
     if (!body) return;
 
     var quotes = [
-      "「别人都看不懂，我在打的时候一直都是巅峰，最强大的是自己。」",
-      "「你运气很好，想怎么玩就怎么玩。」",
-      "「老头射手」——他这样自嘲自己。",
-      "「输比赛会内耗，有无数个夜晚想不打了，但醒来还是坚持走下去。」",
-      "「一诺千金。」",
-      "「想赢，就要比别人多练一点。」",
-      "「我会等到属于我的那一天。」"
+      "\"Nobody else can see it — when I'm playing, I'm always at my peak. The strongest is myself.\"",
+      "\"You're lucky — play however you want.\"",
+      "\"Old man marksman\" — how he jokes about himself.",
+      "\"Losing eats away at me; there were countless nights I wanted to quit, but I woke up and kept going.\"",
+      "\"A promise worth a thousand gold.\"",
+      "\"If you want to win, you have to practice a little more than others.\"",
+      "\"I will wait for the day that belongs to me.\""
     ];
     var last = -1;
 
@@ -622,7 +622,7 @@
     showQuote();
   })();
 
-  /* ---------- 动态效果：滚动进度条 ---------- */
+  /* ---------- Effect: scroll progress bar ---------- */
   (function () {
     var bar = document.getElementById("scrollProgress");
     if (!bar) return;
@@ -636,7 +636,7 @@
     updateBar();
   })();
 
-  /* ---------- 动态效果：目录卡 3D 倾斜 ---------- */
+  /* ---------- Effect: 3D tilt on directory cards ---------- */
   (function () {
     var cards = document.querySelectorAll(".hub-card");
     if (!cards.length) return;
@@ -653,7 +653,7 @@
     });
   })();
 
-  /* ---------- 动态效果：数据数字滚动 ---------- */
+  /* ---------- Effect: stat number roll ---------- */
   function animateStats() {
     document.querySelectorAll(".stat-card b").forEach(function (b) {
       if (b.dataset.done) return;
@@ -676,7 +676,7 @@
     });
   }
 
-  /* ---------- 动态效果：Hero 视差 ---------- */
+  /* ---------- Effect: hero parallax ---------- */
   (function () {
     var hero = document.querySelector(".hero");
     var poster = document.querySelector(".hero-media img");
@@ -692,7 +692,7 @@
     });
   })();
 
-  /* ---------- 动态效果：点击波纹 ---------- */
+  /* ---------- Effect: click ripple ---------- */
   (function () {
     document.addEventListener("click", function (e) {
       var target = e.target && e.target.closest
@@ -709,7 +709,7 @@
     });
   })();
 
-  /* ---------- 动态效果：章节卡通装饰 ---------- */
+  /* ---------- Effect: section cartoon decorations ---------- */
   (function () {
     var map = {
       about: ["🎯", "✨"],
@@ -739,7 +739,7 @@
     });
   })();
 
-  /* ---------- 专辑化：目录页码 + 章节编号 ---------- */
+  /* ---------- Album styling: directory page numbers + chapter numbers ---------- */
   (function () {
     document.querySelectorAll(".hub-card .hub-num").forEach(function (el) {
       if (el.textContent.indexOf("P.") === 0) return;
@@ -764,7 +764,7 @@
     });
   })();
 
-  /* ---------- 图集灯箱 ---------- */
+  /* ---------- Gallery lightbox ---------- */
   (function () {
     var lb = document.getElementById("lightbox");
     var img = document.getElementById("lbImg");
@@ -821,12 +821,12 @@
     });
   })();
 
-  /* ---------- 六边形对比图 ---------- */
+  /* ---------- Hexagon comparison chart ---------- */
   (function () {
     var svg = document.getElementById("radarChart");
     if (!svg) return;
 
-    var dims = ["击杀", "生存", "经济", "输出", "参团", "KDA"];
+    var dims = ["Kills", "Survival", "Economy", "Damage", "Teamfight", "KDA"];
     var players = [
       { color: "#ff4a5a", values: [92, 84, 95, 93, 88, 94] },
       { color: "#4a9eff", values: [89, 82, 91, 90, 86, 89] },
@@ -861,21 +861,21 @@
     svg.innerHTML = html;
   })();
 
-  /* ---------- 各章节滚动字幕 ---------- */
+  /* ---------- Per-section scrolling ticker ---------- */
   (function () {
     var data = {
-      about: ["徐必成", "2001.12.26", "江西抚州南丰", "发育路", "成都AG超玩会", "公孙离 · 云诺千山"],
-      story: ["警校少年", "BA 黑凤梨", "老头射手", "一诺千金", "从替补到 FMVP"],
-      timeline: ["2018 首秀", "2019 首冠", "2023 FMVP", "2024 双冠", "2025 三冠", "2026 亚运"],
-      highlights: ["公孙离关键一推", "孙尚香五杀", "世冠 FMVP", "年总 FMVP", "云诺千山"],
-      stats: ["七冠六亚", "1104 局", "671 胜", "185 次 MVP", "1000 击杀", "2000 击杀", "4000 助攻"],
-      schedule: ["KPL 2026", "挑战者杯", "电竞世界杯", "亚运会", "最近比赛"],
-      quotes: ["一诺千金", "老头射手", "最强的是自己", "以热爱为名"],
-      play: ["知识问答", "猜英雄", "荣誉配对", "今日一诺"],
-      gallery: ["捧杯瞬间", "初登赛场", "总决赛海报", "MVP 肖像"],
-      watch: ["KPL 2026", "官方直播间 55", "比赛回放", "电竞世界杯"],
-      message: ["写下一句应援", "留下你的名字", "以热爱为名"],
-      end: ["感谢阅读", "VOL.01 · 2026", "少年一诺 矢志不渝"]
+      about: ["Xu Bicheng", "2001.12.26", "Nanfeng, Fuzhou, Jiangxi", "Marksman", "Chengdu AG Super Play", "Gongsun Li · Yun Nuo Qian Shan"],
+      story: ["Police-academy boy", "BA Heifengli", "Old man marksman", "A promise worth gold", "From substitute to FMVP"],
+      timeline: ["2018 debut", "2019 first title", "2023 FMVP", "2024 double", "2025 three titles", "2026 Asian Games"],
+      highlights: ["Gongsun Li decisive push", "Sun Shangxiang pentakill", "World Cup FMVP", "Annual Finals FMVP", "Yun Nuo Qian Shan"],
+      stats: ["7 titles 6 runner-up", "1104 games", "671 wins", "185 MVPs", "1000 kills", "2000 kills", "4000 assists"],
+      schedule: ["KPL 2026", "Challenger Cup", "Esports World Cup", "Asian Games", "Recent matches"],
+      quotes: ["A promise worth gold", "Old man marksman", "The strongest is myself", "In the name of love"],
+      play: ["Quiz", "Guess the Hero", "Honor Matching", "Today's Yinuo"],
+      gallery: ["Trophy moment", "Debut", "Finals poster", "MVP portrait"],
+      watch: ["KPL 2026", "Official room 55", "Match replays", "Esports World Cup"],
+      message: ["Leave a word of support", "Leave your name", "In the name of love"],
+      end: ["Thanks for reading", "VOL.01 · 2026", "Youthful Yinuo, Unwavering"]
     };
 
     Object.keys(data).forEach(function (id) {
@@ -903,7 +903,7 @@
     });
   })();
 
-  /* ---------- 年份 ---------- */
+  /* ---------- Year ---------- */
   var yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 })();
