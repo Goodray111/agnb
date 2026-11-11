@@ -2392,6 +2392,14 @@ button { font-family: inherit; }
   background: #000;
 }
 .replay p { margin: 0; padding: 10px 12px; font-size: 12px; color: var(--text-2); background: var(--card); }
+.replay-link {
+  display: block;
+  padding: 8px 12px 12px;
+  font-size: 12px;
+  color: var(--red);
+  background: var(--card);
+}
+.replay-link:hover { text-decoration: underline; }
 
 /* ---------- Esports-style dynamic effects ---------- */
 /* Full-screen scanline */
